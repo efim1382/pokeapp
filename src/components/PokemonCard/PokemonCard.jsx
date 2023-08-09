@@ -1,15 +1,14 @@
 import React, { Fragment } from "react";
 import PropTypes from "prop-types";
 import { NavLink } from "react-router-dom";
-import { useQuery } from "react-query";
-import { fetchPokemon } from "api/pokemon.api";
+import { usePokemonDetails } from "hooks/pokemonQueries";
 
 const PokemonCard = ({ name }) => {
 	const {
 		data = {},
 		isLoading,
 		isSuccess,
-	} = useQuery(["pokemon", name], () => fetchPokemon(name));
+	} = usePokemonDetails(name);
 
 	const avatarUrl = `https://img.pokemondb.net/artwork/large/${name}.jpg`;
 

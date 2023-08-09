@@ -1,7 +1,7 @@
 import React from "react";
 import { useParams, NavLink } from "react-router-dom";
-import { useQuery } from "react-query";
-import { fetchPokemon } from "api/pokemon.api";
+import NotFound from "pages/NotFound";
+import { usePokemonDetails } from "hooks/pokemonQueries";
 
 const Details = () => {
 	const { pokemonName } = useParams();
@@ -10,7 +10,7 @@ const Details = () => {
 		data = {},
 		isLoading,
 		error,
-	} = useQuery(["pokemon", pokemonName], () => fetchPokemon(pokemonName));
+	} = usePokemonDetails(pokemonName);
 
 	const {
 		id,
@@ -28,6 +28,12 @@ const Details = () => {
 	}
 
 	if (error) {
+		if (error.code === 404) {
+			return (
+				<NotFound />
+			);
+		}
+
 		return <div>Error: {error.message}</div>;
 	}
 

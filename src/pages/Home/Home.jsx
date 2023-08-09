@@ -1,8 +1,7 @@
 import React from "react";
-import { useQuery } from "react-query";
 import { useSearchParams } from "react-router-dom";
 import PokemonCard from "components/PokemonCard";
-import { fetchPokemonList } from "api/pokemon.api";
+import { usePokemonList } from "hooks/pokemonQueries";
 
 const limit = 8;
 
@@ -14,7 +13,7 @@ const Home = () => {
 		data = {},
 		isLoading,
 		error,
-	} = useQuery(["pokemon-list", offset], () => fetchPokemonList({ offset, limit }));
+	} = usePokemonList({ offset, limit });
 
 	const {
 		results = [],
