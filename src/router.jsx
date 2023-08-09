@@ -2,6 +2,7 @@ import React from "react";
 import { createBrowserRouter } from "react-router-dom";
 import Layout from "components/Layout";
 import Home from "pages/Home";
+import Details from "pages/Details";
 
 const routes = [
 	{
@@ -12,6 +13,11 @@ const routes = [
 			{
 				index: true,
 				element: <Home />,
+			},
+
+			{
+				path: "pokemon/:pokemonName/",
+				element: <Details />,
 			},
 		]
 	}

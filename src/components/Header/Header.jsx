@@ -1,9 +1,10 @@
 import React from "react";
+import { NavLink } from "react-router-dom";
 
 const Header = () => {
 	return (
 		<div>
-			Header
+			<NavLink to="/">Home</NavLink>
 		</div>
 	);
 };
