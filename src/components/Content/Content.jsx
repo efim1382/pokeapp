@@ -1,8 +1,14 @@
+import React from "react";
 import styled from "styled-components";
-import * as content from "../../styles/variables/content";
-import { media } from "../../styles/mixins/media";
+import PropTypes from "prop-types";
+import * as content from "styles/variables/content";
+import { media } from "styles/mixins/media";
 
-const Content = styled.div`
+const Wrapper = styled.div`
+	background-color: ${({theme}) => theme.bodyBg};
+`;
+
+const Container = styled.div`
 	width: 100%;
 	max-width: ${content.CONTENT_WIDTH_XL + (2 *  content.PADDING_X_XL)}px;
 	padding-left: ${content.PADDING_X_XL}px;
@@ -11,7 +17,6 @@ const Content = styled.div`
 	margin-left: auto;
 	margin-right: auto;
 	box-sizing: border-box;
-	background-color: ${({theme}) => theme.bodyBg};
 
 	${media("tablet", )} {
 		padding-left: ${content.PADDING_X_M}px;
@@ -19,5 +24,17 @@ const Content = styled.div`
 	}
 
 `;
+
+const Content = ({children}) => (
+	<Wrapper>
+		<Container>
+			{children}
+		</Container>
+	</Wrapper>
+);
+
+Content.propTypes = {
+	children: PropTypes.any.isRequired,
+}
 
 export default Content;
