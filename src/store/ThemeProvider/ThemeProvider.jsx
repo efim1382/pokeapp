@@ -1,7 +1,7 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import PropTypes from "prop-types";
 import { ThemeProvider as Provider } from "styled-components";
-import * as colors from "../../styles/variables/colors";
+import * as colors from "styles/variables/colors";
 
 const theme = {
 	light: {
@@ -16,6 +16,12 @@ const theme = {
 		button: {
 			text: colors.GREEN,
 			bg: colors.LIGHT_GREEN,
+		},
+		toggle: {
+			filter: "url(#filter0_d_38_3663)",
+			topColor: "#3E3E3E",
+			line: "#252525",
+			circle: "#252525"
 		}
 	},
 	dark: {
@@ -30,14 +36,28 @@ const theme = {
 		button: {
 			text: colors.BLUE,
 			bg: colors.DARK,
+		},
+		toggle: {
+			filter: "none",
+			topColor: "#F8F8F8",
+			line: "#FF4C41",
+			circle: "#FF4C41"
 		}
 	},
 }
 
 const ThemeProvider = ({children}) => {
+	const [isLightTheme, setIsLightTheme] = useState(true);
+
+	useEffect(() => {
+		localStorage.setItem('items', JSON.stringify(isLightTheme));
+	}, [isLightTheme]);
+
+	const themeHandler = () => setIsLightTheme(!isLightTheme);
+	const currentTheme = isLightTheme ? theme.light : theme.dark;
 
 	return (
-		<Provider theme={theme.light}>
+		<Provider themeHandler={themeHandler} theme={{...currentTheme, themeHandler: themeHandler}}>
 			{children}
 		</Provider>
 	)

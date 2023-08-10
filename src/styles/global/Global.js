@@ -1,6 +1,6 @@
 import { createGlobalStyle } from "styled-components";
-import PTSansRegular from "../fonts/PTSans-Regular.ttf"
-import PTSansBold from "../fonts/PTSans-Bold.ttf"
+import PTSansRegular from "../fonts/PTSans-Regular.ttf";
+import PTSansBold from "../fonts/PTSans-Bold.ttf";
 
 const GlobalStyles = createGlobalStyle`
 	*,
@@ -28,10 +28,11 @@ const GlobalStyles = createGlobalStyle`
 	}
 
 	body {
-	  background-color: hsl(0, 0%, 100%);
-	  color: hsl(0, 1%, 16%);
-	  font-family: "PT Sans", sans-serif;
-	  overflow-x: hidden;
+		background-color: hsl(0, 0%, 100%);
+		color: #888;
+		font-family: "PT Sans", sans-serif;
+		overflow-x: hidden;
+		font-size: 16px;
 	}
 `
 
