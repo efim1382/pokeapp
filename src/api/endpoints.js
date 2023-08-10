@@ -9,4 +9,6 @@ export const fetchPokemonList = (params = {}) => {
 	return apiClient.get(`/pokemon/?limit=${limit}&offset=${offset}`);
 };
 
-export const fetchPokemon = async (id) => apiClient.get(`/pokemon/${id}/`);
+export const fetchPokemon = (id) => apiClient.get(`/pokemon/${id}/`);
+
+export const fetchPokemonSpecies = (id) => apiClient.get(`/pokemon-species/${id}/`);

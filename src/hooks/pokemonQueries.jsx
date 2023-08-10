@@ -1,5 +1,5 @@
 import { useQuery } from "react-query";
-import { fetchPokemon, fetchPokemonList } from "api/endpoints";
+import {fetchPokemon, fetchPokemonList, fetchPokemonSpecies} from "api/endpoints";
 
 export const usePokemonList = (options = {}) => {
 	const {
@@ -13,11 +13,45 @@ export const usePokemonList = (options = {}) => {
 	);
 };
 
-export const usePokemonDetails = (name) => {
+export const usePokemonDetails = (id) => {
 	return useQuery(
-		["pokemon", name],
-		() => fetchPokemon(name),
+		["pokemon", id],
+		() => fetchPokemon(id),
 		{ retry: false },
 	);
 };
 
+export const usePokemonSpecies = (id) => {
+	return useQuery(
+		["pokemon-species", id],
+		() => fetchPokemonSpecies(id),
+		{ retry: false },
+	);
+};
+
+export const usePokemonFullDetails = (id) => {
+	const {
+		data: pokemonData = {},
+		isLoading: isPokemonLoading,
+		error: pokemonError,
+	} = usePokemonDetails(id);
+
+	const {
+		data: species = {},
+		isLoading: isSpeciesLoading,
+		error: speciesError,
+	} = usePokemonSpecies(id);
+
+	const isLoading = isPokemonLoading || isSpeciesLoading;
+	const error = pokemonError || speciesError;
+
+	return {
+		data: {
+			details: pokemonData,
+			species: species,
+		},
+
+		isLoading,
+		error,
+	};
+}

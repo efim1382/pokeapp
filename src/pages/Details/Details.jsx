@@ -1,7 +1,8 @@
 import React from "react";
 import { useParams, NavLink } from "react-router-dom";
 import NotFound from "pages/NotFound";
-import { usePokemonDetails } from "hooks/pokemonQueries";
+import { usePokemonFullDetails } from "hooks/pokemonQueries";
+import Evolution from "./Evolution";
 
 const Details = () => {
 	const { pokemonName } = useParams();
@@ -10,13 +11,16 @@ const Details = () => {
 		data = {},
 		isLoading,
 		error,
-	} = usePokemonDetails(pokemonName);
+	} = usePokemonFullDetails(pokemonName);
+
+	const { details, species } = data;
+	const { evolution_chain = {} } = species;
 
 	const {
 		id,
 		name,
 		weight,
-	} = data;
+	} = details;
 
 	const avatarUrl = `https://img.pokemondb.net/artwork/large/${name}.jpg`;
 	const previousPokemonId = id - 1;
@@ -48,6 +52,10 @@ const Details = () => {
 			)}
 
 			<NavLink to={`/pokemon/${nextPokemonId}/`}>next</NavLink>
+
+			{evolution_chain.url && (
+				<Evolution url={evolution_chain.url} />
+			)}
 		</div>
 	);
 };
