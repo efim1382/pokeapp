@@ -52,10 +52,16 @@ const ThemeProvider = ({children}) => {
 	const [isLightTheme, setIsLightTheme] = useState(true);
 
 	useEffect(() => {
-		localStorage.setItem('items', JSON.stringify(isLightTheme));
-	}, [isLightTheme]);
+		const themeState = JSON.parse(localStorage.getItem("isLightTheme"));
+		if (themeState && themeState?.isLightTheme !== isLightTheme) {
+			setIsLightTheme(themeState?.isLightTheme)
+		}
+	}, []);
 
-	const themeHandler = () => setIsLightTheme(!isLightTheme);
+	const themeHandler = () => {
+		localStorage.setItem('isLightTheme', JSON.stringify( {isLightTheme: !isLightTheme} ));
+		setIsLightTheme(!isLightTheme);
+	};
 	const currentTheme = isLightTheme ? theme.light : theme.dark;
 
 	return (

@@ -10,6 +10,7 @@ const Container = styled.div`
 	padding-left: ${content.PADDING_X_XL}px;
 	padding-right: ${content.PADDING_X_XL}px;
 	padding-top: ${content.PADDING_Y_XL}px;
+	padding-bottom: ${content.PADDING_Y_XL}px;
 	margin-left: auto;
 	margin-right: auto;
 	box-sizing: border-box;

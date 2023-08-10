@@ -1,4 +1,4 @@
-import React, { Fragment } from "react";
+import React from "react";
 import PropTypes from "prop-types";
 import { NavLink } from "react-router-dom";
 import { usePokemonDetails } from "hooks/pokemonQueries";
@@ -17,6 +17,8 @@ const Card = styled.div`
 	border-radius: 16px;
 	background-color: ${({theme}) => theme.card.bg};
 	text-decoration: none;
+	box-shadow: 0 8px 8px 0 rgba(0, 0, 0, 0.06);
+
 `;
 
 const TopBar = styled.div`
