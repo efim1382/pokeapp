@@ -1,9 +1,10 @@
-import React from "react";
+import React, { Suspense, lazy } from "react";
 import { createBrowserRouter } from "react-router-dom";
 import Layout from "components/Layout";
-import Home from "pages/Home";
-import Details from "pages/Details";
-import NotFound from "pages/NotFound";
+
+const NotFoundPage = lazy(() => import("pages/NotFound"))
+const HomePage = lazy(() => import("pages/Home"))
+const DetailsPage = lazy(() => import("pages/Details"));
 
 const routes = [
 	{
@@ -13,17 +14,31 @@ const routes = [
 		children: [
 			{
 				path: "*",
-				element: <NotFound />,
+				element: (
+					<Suspense fallback="Loading...">
+						<NotFoundPage />
+					</Suspense>
+				),
 			},
 
 			{
 				index: true,
-				element: <Home />,
+
+				element: (
+					<Suspense fallback="Loading...">
+						<HomePage />
+					</Suspense>
+				)
 			},
 
 			{
 				path: "pokemon/:pokemonName/",
-				element: <Details />,
+
+				element: (
+					<Suspense fallback="Loading...">
+						<DetailsPage />
+					</Suspense>
+				),
 			},
 		]
 	}
