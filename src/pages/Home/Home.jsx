@@ -2,7 +2,7 @@ import React from "react";
 import { useSearchParams } from "react-router-dom";
 import PokemonCard from "components/PokemonCard";
 import { usePokemonList } from "hooks/pokemonQueries";
-
+import Button from "../../components/Button";
 const limit = 8;
 
 const Home = () => {
@@ -50,19 +50,19 @@ const Home = () => {
 			))}
 
 			{previous && (
-				<button
+				<Button
 					onClick={handlePreviousPageClick}
 				>
 					Prev
-				</button>
+				</Button>
 			)}
 
 			{next && (
-				<button
+				<Button
 					onClick={handleNextPageClick}
 				>
 					Next
-				</button>
+				</Button>
 			)}
 		</div>
 	);

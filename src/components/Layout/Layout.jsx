@@ -1,13 +1,20 @@
-import React, { Fragment } from "react";
+import React from "react";
 import { Outlet } from "react-router-dom";
+import GlobalStyles from "../../styles/global/Global"
 import Header from "components/Header";
+import ThemeProvider from "components/ThemeProvider";
+import Content from "../Content";
 
 const Layout = () => {
 	return (
-		<Fragment>
+		<ThemeProvider>
+			<GlobalStyles/>
 			<Header />
-			<Outlet />
-		</Fragment>
+			<Content>
+				<Outlet />
+			</Content>
+
+		</ThemeProvider>
 	);
 };
 
