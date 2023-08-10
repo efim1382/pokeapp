@@ -1,8 +1,8 @@
 import React from "react";
 import { useParams, NavLink } from "react-router-dom";
 import NotFound from "pages/NotFound";
-import { usePokemonFullDetails } from "hooks/pokemonQueries";
 import Evolution from "./Evolution";
+import { usePokemonFullDetails } from "hooks/pokemonQueries";
 
 const Details = () => {
 	const { pokemonName } = useParams();
