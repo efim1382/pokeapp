@@ -28,7 +28,7 @@ const GlobalStyles = createGlobalStyle`
 	}
 
 	body {
-		background-color: hsl(0, 0%, 100%);
+		background-color: ${({theme}) => theme.bodyBg};
 		color: #888;
 		font-family: "PT Sans", sans-serif;
 		overflow-x: hidden;

@@ -26,11 +26,11 @@ const Container = styled.div`
 `;
 
 const Content = ({children}) => (
-	<Wrapper>
+	// <Wrapper>
 		<Container>
 			{children}
 		</Container>
-	</Wrapper>
+	// </Wrapper>
 );
 
 Content.propTypes = {

@@ -2,6 +2,48 @@ import React, { Fragment } from "react";
 import PropTypes from "prop-types";
 import { NavLink } from "react-router-dom";
 import { usePokemonDetails } from "hooks/pokemonQueries";
+import Height from "./Height";
+import Weight from "./Height";
+import styled from "styled-components";
+
+const Card = styled.div`
+	display: flex;
+	width: 100%;
+	height: 100%;
+	padding: 16px;
+	flex-direction: column;
+	align-items: center;
+	gap: 16px;
+	border-radius: 16px;
+	background-color: ${({theme}) => theme.card.bg};
+	text-decoration: none;
+`;
+
+const TopBar = styled.div`
+	display: flex;
+	width: 100%;
+	justify-content: space-between;
+	padding-bottom: 40px;
+
+	.stats {
+		display: flex;
+		margin: 0 -8px;
+	}
+
+	.stat-item {
+		margin: 0 4px;
+		display: flex;
+		align-items: center;
+
+		.text {
+			color: ${({theme}) => theme.card.stat};
+		}
+	}
+`;
+
+const Image = styled.img`
+	max-width: 182px;
+`;
 
 const PokemonCard = ({ name }) => {
 	const {
@@ -19,19 +61,27 @@ const PokemonCard = ({ name }) => {
 
 	return (
 		<NavLink to={`/pokemon/${name}/`}>
-			<p>{name}</p>
-			<img width="300" src={avatarUrl} alt={name} />
+			<Card>
+				<TopBar>
+					<div></div>
+					{isSuccess && (
+						<div className="stats">
+							<span className="stat-item"><Weight/> <span className="value">{weight}</span></span>
+							<span className="stat-item"><Height/><span className="value">{height}</span></span>
+						</div>
+					)}
+				</TopBar>
+				<Image
+					src={avatarUrl}
+					alt={name}
+				/>
 
-			{isLoading && (
-				<p>Loading details data...</p>
-			)}
+				<p>{name}</p>
 
-			{isSuccess && (
-				<Fragment>
-					<p>Weight: {weight}</p>
-					<p>Height: {height}</p>
-				</Fragment>
-			)}
+				{isLoading && (
+					<p>Loading details data...</p>
+				)}
+			</Card>
 		</NavLink>
 	);
 };

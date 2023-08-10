@@ -11,7 +11,8 @@ const theme = {
 			bg: colors.WHITE,
 			title: colors.GREEN,
 			desc: colors.GRAY,
-			stat: colors.BG_LIGHT
+			stat: colors.BG_LIGHT,
+			statIcon: colors.RED
 		},
 		button: {
 			text: colors.GREEN,
@@ -31,7 +32,8 @@ const theme = {
 			bg: colors.DARK,
 			title: colors.BLUE,
 			desc: colors.GRAY,
-			stat: colors.BG_LIGHT
+			stat: colors.BLUE,
+			statIcon: colors.BLUE
 		},
 		button: {
 			text: colors.BLUE,

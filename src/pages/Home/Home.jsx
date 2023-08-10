@@ -2,7 +2,8 @@ import React, { Suspense, lazy } from "react";
 import { useSearchParams } from "react-router-dom";
 import Button from "components/Button";
 import { usePokemonList } from "hooks/pokemonQueries";
-
+import CardsContainer from "components/PokemonCard/CradsContainer";
+import CardWrap from "components/PokemonCard/CardWrap";
 const PokemonCard = lazy(() => import("components/PokemonCard"));
 
 const limit = 8;
@@ -47,11 +48,15 @@ const Home = () => {
 
 	return (
 		<div>
-			{results.map((pokemon) => (
-				<Suspense key={pokemon.name} fallback="Loading...">
-					<PokemonCard name={pokemon.name} />
-				</Suspense>
-			))}
+			<CardsContainer>
+				{results.map((pokemon) => (
+					<Suspense key={pokemon.name} fallback="Loading...">
+						<CardWrap>
+							<PokemonCard name={pokemon.name} />
+						</CardWrap>
+					</Suspense>
+				))}
+			</CardsContainer>
 
 			{previous && (
 				<Button
