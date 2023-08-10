@@ -1,5 +1,6 @@
 import { useQuery } from "react-query";
 import {fetchPokemon, fetchPokemonList, fetchPokemonSpecies} from "api/endpoints";
+import apiClient from "../api/apiClient";
 
 export const usePokemonList = (options = {}) => {
 	const {
@@ -55,3 +56,11 @@ export const usePokemonFullDetails = (id) => {
 		error,
 	};
 }
+
+export const useCustomRequest = (url) => {
+	return useQuery(
+		["pokemon-custom-request", url],
+		() => apiClient.get(url),
+		{ retry: false },
+	);
+};

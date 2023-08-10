@@ -1,19 +1,36 @@
 import React from "react";
-import {useQuery} from "react-query";
-import apiClient from "api/apiClient"
+import PropTypes from "prop-types";
+import { useCustomRequest } from "hooks/pokemonQueries";
+
+const generateEvolutionRows = (chain) => {
+	const rows = [];
+
+	function generateRow(chainElement, currentRow = []) {
+		const { species, evolves_to } = chainElement;
+		const newRow = [...currentRow, species.name];
+
+		if (evolves_to.length === 0) {
+			rows.push(newRow);
+			return;
+		}
+
+		for (const nextChain of evolves_to) {
+			generateRow(nextChain, newRow);
+		}
+	}
+
+	generateRow(chain);
+	return rows;
+}
 
 const Evolution = ({ url }) => {
 	const {
 		data = {},
 		isLoading,
 		error,
-	} = useQuery(
-		["evolution-chain", url],
-		() => apiClient.get(url),
-		{ retry: false },
-	);
+	} = useCustomRequest(url);
 
-	console.log(data);
+	const { chain = {} } = data;
 
 	if (isLoading) {
 		return (
@@ -27,11 +44,29 @@ const Evolution = ({ url }) => {
 		);
 	}
 
+	const evolutionRows = generateEvolutionRows(chain);
+
 	return (
 		<div>
-			Evolution
+			<p>Evolution</p>
+
+			{evolutionRows.map((chain) => {
+				const key = chain.join('-');
+
+				return (
+					<div key={key}>
+						{chain.map((pokemon) => (
+							<span key={pokemon}>{pokemon}</span>
+						))}
+					</div>
+				);
+			})}
 		</div>
 	);
 };
+
+Evolution.propTypes = {
+	url: PropTypes.string.isRequired,
+}
 
 export default Evolution;
