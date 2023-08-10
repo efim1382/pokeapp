@@ -4,10 +4,6 @@ import PropTypes from "prop-types";
 import * as content from "styles/variables/content";
 import { media } from "styles/mixins/media";
 
-const Wrapper = styled.div`
-	background-color: ${({theme}) => theme.bodyBg};
-`;
-
 const Container = styled.div`
 	width: 100%;
 	max-width: ${content.CONTENT_WIDTH_XL + (2 *  content.PADDING_X_XL)}px;
@@ -26,11 +22,9 @@ const Container = styled.div`
 `;
 
 const Content = ({children}) => (
-	// <Wrapper>
-		<Container>
-			{children}
-		</Container>
-	// </Wrapper>
+	<Container>
+		{children}
+	</Container>
 );
 
 Content.propTypes = {
