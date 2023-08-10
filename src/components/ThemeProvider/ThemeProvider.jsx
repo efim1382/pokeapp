@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 import { ThemeProvider as Provider } from "styled-components";
 import * as colors from "../../styles/variables/colors";
 
@@ -40,6 +41,10 @@ const ThemeProvider = ({children}) => {
 			{children}
 		</Provider>
 	)
+}
+
+ThemeProvider.propTypes = {
+	children: PropTypes.any.isRequired,
 }
 
 export default ThemeProvider;
