@@ -8,6 +8,11 @@ const apiConfig = {
 
 const generateUrl = (path) => {
 	const { baseUrl } = apiConfig;
+
+	if (path.startsWith("https://")) {
+		return path;
+	}
+
 	return `${baseUrl}${path}`;
 };
 
