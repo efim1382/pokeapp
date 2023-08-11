@@ -4,7 +4,7 @@ import NotFound from "pages/NotFound";
 import Evolution from "./Evolution";
 import Stat from "./Stat";
 import { usePokemonDetails } from "hooks/pokemonQueries";
-import { getDescription, getAvatarUrl } from "helpers/pokemonHelpers";
+import { getDescription } from "helpers/pokemonHelpers";
 
 const maxCaptureRate = 255;
 
@@ -37,6 +37,7 @@ const Details = () => {
 		id,
 		name,
 		weight,
+		sprites = {},
 		types = [],
 		stats = [],
 		abilities = [],
@@ -50,7 +51,6 @@ const Details = () => {
 		flavor_text_entries = [],
 	} = species;
 
-	const avatarUrl = getAvatarUrl(id);
 	const previousPokemonId = id - 1;
 	const formattedPreviousPokemonId = String(previousPokemonId).padStart(4, 0);
 	const nextPokemonId = id + 1;
@@ -61,7 +61,7 @@ const Details = () => {
 
 	return (
 		<div>
-			<img width="300" src={avatarUrl} alt={pokemonName} />
+			<img width="300" src={sprites.other.dream_world.front_default} alt={pokemonName} />
 			<div>Name: {name}</div>
 			<div data-testid="pokemon-weight">Weight: {weight}</div>
 

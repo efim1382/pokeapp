@@ -4,7 +4,7 @@ import { NavLink } from "react-router-dom";
 import Height from "./Height";
 import Weight from "./Weight";
 import { usePokemonDetails } from "hooks/pokemonQueries";
-import { getAvatarUrl, getDescription } from "helpers/pokemonHelpers";
+import { getDescription } from "helpers/pokemonHelpers";
 import styled from "styled-components";
 
 const Card = styled.div`
@@ -68,12 +68,12 @@ const PokemonCard = ({ name }) => {
 		id,
 		height,
 		weight,
+		sprites = {},
 		types = [],
 	} = details;
 
 	const { flavor_text_entries } = species;
 	const description = getDescription(flavor_text_entries);
-	const avatarUrl = getAvatarUrl(id);
 
 	return (
 		<NavLink to={`/pokemon/${name}/`}>
@@ -81,7 +81,7 @@ const PokemonCard = ({ name }) => {
 				<TopBar>
 					<div>
 						{types.map((item) => (
-							<span key={item.slot}>{item.type.name}</span>
+							<span key={item.type.name}>{item.type.name}</span>
 						))}
 					</div>
 
@@ -92,7 +92,7 @@ const PokemonCard = ({ name }) => {
 				</TopBar>
 
 				<Image
-					src={avatarUrl}
+					src={sprites.other.dream_world.front_default}
 					alt={name}
 				/>
 
