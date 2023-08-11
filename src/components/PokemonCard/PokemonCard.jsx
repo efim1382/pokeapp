@@ -4,6 +4,7 @@ import { NavLink } from "react-router-dom";
 import Height from "./Height";
 import Weight from "./Weight";
 import { usePokemonDetails } from "hooks/pokemonQueries";
+import { getAvatarUrl } from "helpers/imageHelpers";
 import styled from "styled-components";
 
 const Card = styled.div`
@@ -52,18 +53,19 @@ const PokemonCard = ({ name }) => {
 		isLoading,
 	} = usePokemonDetails(name);
 
-	const avatarUrl = `https://img.pokemondb.net/artwork/large/${name}.jpg`;
-
-	const {
-		height,
-		weight,
-	} = data;
-
 	if (isLoading) {
 		return (
 			<div>Loading...</div>
 		);
 	}
+
+	const {
+		id,
+		height,
+		weight,
+	} = data;
+
+	const avatarUrl = getAvatarUrl(id);
 
 	return (
 		<NavLink to={`/pokemon/${name}/`}>

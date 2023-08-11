@@ -3,6 +3,7 @@ import { useParams, NavLink } from "react-router-dom";
 import NotFound from "pages/NotFound";
 import Evolution from "./Evolution";
 import { usePokemonFullDetails } from "hooks/pokemonQueries";
+import { getAvatarUrl } from "helpers/imageHelpers";
 
 const Details = () => {
 	const { pokemonName } = useParams();
@@ -12,20 +13,6 @@ const Details = () => {
 		isLoading,
 		error,
 	} = usePokemonFullDetails(pokemonName);
-
-	const { details, species } = data;
-	const { evolution_chain = {} } = species;
-
-	const {
-		id,
-		name,
-		weight,
-	} = details;
-
-	const avatarUrl = `https://img.pokemondb.net/artwork/large/${name}.jpg`;
-	const previousPokemonId = id - 1;
-	const nextPokemonId = id + 1;
-	const isPreviousPokemonExist = previousPokemonId > 0;
 
 	if (isLoading) {
 		return <div>Loading...</div>;
@@ -40,6 +27,20 @@ const Details = () => {
 
 		return <div>Error: {error.message}</div>;
 	}
+
+	const { details, species } = data;
+	const { evolution_chain = {} } = species;
+
+	const {
+		id,
+		name,
+		weight,
+	} = details;
+
+	const avatarUrl = getAvatarUrl(id);
+	const previousPokemonId = id - 1;
+	const nextPokemonId = id + 1;
+	const isPreviousPokemonExist = previousPokemonId > 0;
 
 	return (
 		<div>
