@@ -19,7 +19,6 @@ const Container = styled.div`
 		padding-left: ${content.PADDING_X_M}px;
 		padding-right: ${content.PADDING_X_M}px;
 	}
-
 `;
 
 const Content = ({children}) => (
@@ -30,6 +29,6 @@ const Content = ({children}) => (
 
 Content.propTypes = {
 	children: PropTypes.any.isRequired,
-}
+};
 
 export default Content;

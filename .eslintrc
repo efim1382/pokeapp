@@ -27,5 +27,9 @@
 		"plugin:react-hooks/recommended",
 		"plugin:testing-library/react",
 		"plugin:jest-dom/recommended"
-	]
+	],
+
+	"rules": {
+		"semi": [2, "always"]
+	}
 }

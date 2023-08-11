@@ -1,9 +1,9 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { NavLink } from "react-router-dom";
-import { usePokemonDetails } from "hooks/pokemonQueries";
 import Height from "./Height";
-import Weight from "./Height";
+import Weight from "./Weight";
+import { usePokemonDetails } from "hooks/pokemonQueries";
 import styled from "styled-components";
 
 const Card = styled.div`
@@ -18,7 +18,6 @@ const Card = styled.div`
 	background-color: ${({theme}) => theme.card.bg};
 	text-decoration: none;
 	box-shadow: 0 8px 8px 0 rgba(0, 0, 0, 0.06);
-
 `;
 
 const TopBar = styled.div`
@@ -51,7 +50,6 @@ const PokemonCard = ({ name }) => {
 	const {
 		data = {},
 		isLoading,
-		isSuccess,
 	} = usePokemonDetails(name);
 
 	const avatarUrl = `https://img.pokemondb.net/artwork/large/${name}.jpg`;
@@ -61,28 +59,29 @@ const PokemonCard = ({ name }) => {
 		weight,
 	} = data;
 
+	if (isLoading) {
+		return (
+			<div>Loading...</div>
+		);
+	}
+
 	return (
 		<NavLink to={`/pokemon/${name}/`}>
 			<Card>
 				<TopBar>
 					<div></div>
-					{isSuccess && (
-						<div className="stats">
-							<span className="stat-item"><Weight/> <span className="value">{weight}</span></span>
-							<span className="stat-item"><Height/><span className="value">{height}</span></span>
-						</div>
-					)}
+					<div className="stats">
+						<span className="stat-item"><Weight/> <span className="value">{weight}</span></span>
+						<span className="stat-item"><Height/><span className="value">{height}</span></span>
+					</div>
 				</TopBar>
+
 				<Image
 					src={avatarUrl}
 					alt={name}
 				/>
 
 				<p>{name}</p>
-
-				{isLoading && (
-					<p>Loading details data...</p>
-				)}
 			</Card>
 		</NavLink>
 	);
@@ -90,6 +89,6 @@ const PokemonCard = ({ name }) => {
 
 PokemonCard.propTypes = {
 	name: PropTypes.string.isRequired,
-}
+};
 
 export default PokemonCard;

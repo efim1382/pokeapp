@@ -1,14 +1,14 @@
 import { createGlobalStyle } from "styled-components";
-import PTSansRegular from "../fonts/PTSans-Regular.ttf";
-import PTSansBold from "../fonts/PTSans-Bold.ttf";
+import PTSansRegular from "styles/fonts/PTSans-Regular.ttf";
+import PTSansBold from "styles/fonts/PTSans-Bold.ttf";
 
 const GlobalStyles = createGlobalStyle`
 	*,
 	*::before,
 	*::after {
-	  margin: 0;
-	  padding: 0;
-	  box-sizing: border-box;
+		margin: 0;
+		padding: 0;
+		box-sizing: border-box;
 	}
 
 	@font-face {
@@ -34,6 +34,6 @@ const GlobalStyles = createGlobalStyle`
 		overflow-x: hidden;
 		font-size: 16px;
 	}
-`
+`;
 
 export default GlobalStyles;

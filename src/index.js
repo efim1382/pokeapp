@@ -7,6 +7,7 @@ import {
 	QueryClientProvider,
 } from "react-query";
 
+import ThemeProvider from "store/ThemeProvider";
 import router from "./router";
 
 const queryClient = new QueryClient();
@@ -14,6 +15,8 @@ const root = ReactDOM.createRoot(document.getElementById("root"));
 
 root.render(
 	<QueryClientProvider client={queryClient}>
-		<RouterProvider router={router} />
+		<ThemeProvider>
+			<RouterProvider router={router} />
+		</ThemeProvider>
 	</QueryClientProvider>
 );

@@ -21,7 +21,7 @@ const generateEvolutionRows = (chain) => {
 
 	generateRow(chain);
 	return rows;
-}
+};
 
 const Evolution = ({ url }) => {
 	const {
@@ -67,6 +67,6 @@ const Evolution = ({ url }) => {
 
 Evolution.propTypes = {
 	url: PropTypes.string.isRequired,
-}
+};
 
 export default Evolution;

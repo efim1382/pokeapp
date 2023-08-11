@@ -21,23 +21,21 @@ const StyledButton = styled.button`
 	overflow: hidden;
 `;
 
-const Button = ({children, onClick}) => {
+const Button = ({ children, onClick }) => {
 	return (
-		<StyledButton
-			onClick={onClick}
-		>
+		<StyledButton onClick={onClick}>
 			{children}
 		</StyledButton>
-	)
+	);
 };
 
 Button.defaultProps = {
 	onClick: Function(),
-}
+};
 
 Button.propTypes = {
 	onClick: PropTypes.func,
 	children: PropTypes.any.isRequired,
-}
+};
 
 export default Button;

@@ -2,8 +2,9 @@ import React, { Suspense, lazy } from "react";
 import { useSearchParams } from "react-router-dom";
 import Button from "components/Button";
 import { usePokemonList } from "hooks/pokemonQueries";
-import CardsContainer from "components/PokemonCard/CradsContainer";
+import CardsContainer from "components/PokemonCard/CardsContainer";
 import CardWrap from "components/PokemonCard/CardWrap";
+
 const PokemonCard = lazy(() => import("components/PokemonCard"));
 
 const limit = 8;
@@ -30,13 +31,13 @@ const Home = () => {
 				? 0
 				: offset - limit,
 		});
-	}
+	};
 
 	const handleNextPageClick = () => {
 		setSearchParams({
 			offset: offset + limit,
 		});
-	}
+	};
 
 	if (isLoading) {
 		return <div>Loading...</div>;

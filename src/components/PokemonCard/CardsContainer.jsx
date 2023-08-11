@@ -5,7 +5,6 @@ const CardsContainer = styled.div`
 	flex-wrap: wrap;
 	margin: 0 -12px;
 	padding-bottom: 40px;
-
 `;
 
 export default CardsContainer;

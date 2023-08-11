@@ -30,7 +30,7 @@ const apiClient = () => {
 			const errorObject = {
 				code: response.status,
 				message,
-			}
+			};
 
 			throw errorObject;
 		}
