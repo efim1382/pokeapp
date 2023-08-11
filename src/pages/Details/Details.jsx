@@ -45,7 +45,7 @@ const Details = () => {
 		<div>
 			<img width="300" src={avatarUrl} alt={pokemonName} />
 			<div>Name: {name}</div>
-			<div>Weight: {weight}</div>
+			<div data-testid="pokemon-weight">Weight: {weight}</div>
 
 			{isPreviousPokemonExist && (
 				<NavLink to={`/pokemon/${previousPokemonId}/`}>prev</NavLink>

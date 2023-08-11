@@ -67,12 +67,12 @@ const PokemonCard = ({ name }) => {
 
 	return (
 		<NavLink to={`/pokemon/${name}/`}>
-			<Card>
+			<Card data-testid="pokemon-card">
 				<TopBar>
 					<div></div>
 					<div className="stats">
-						<span className="stat-item"><Weight/> <span className="value">{weight}</span></span>
-						<span className="stat-item"><Height/><span className="value">{height}</span></span>
+						<span className="stat-item"><Weight /> <span className="value" data-testid="pokemon-card-weight">{weight}</span></span>
+						<span className="stat-item"><Height /><span className="value">{height}</span></span>
 					</div>
 				</TopBar>
 
