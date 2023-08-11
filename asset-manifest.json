@@ -1,6 +1,6 @@
 {
   "files": {
-    "main.js": "/pokeapp/static/js/main.34c8e329.js",
+    "main.js": "/pokeapp/static/js/main.0517e0b9.js",
     "static/js/273.2ff55fe7.chunk.js": "/pokeapp/static/js/273.2ff55fe7.chunk.js",
     "static/js/821.88f3cb9d.chunk.js": "/pokeapp/static/js/821.88f3cb9d.chunk.js",
     "static/js/147.511afc39.chunk.js": "/pokeapp/static/js/147.511afc39.chunk.js",
@@ -10,13 +10,13 @@
     "static/media/logo.svg": "/pokeapp/static/media/logo.1c9774ca26996cee432efa7ab1c44fb7.svg",
     "static/media/search-button.svg": "/pokeapp/static/media/search-button.c28a2d028b57f31ab968bae303a97127.svg",
     "index.html": "/pokeapp/index.html",
-    "main.34c8e329.js.map": "/pokeapp/static/js/main.34c8e329.js.map",
+    "main.0517e0b9.js.map": "/pokeapp/static/js/main.0517e0b9.js.map",
     "273.2ff55fe7.chunk.js.map": "/pokeapp/static/js/273.2ff55fe7.chunk.js.map",
     "821.88f3cb9d.chunk.js.map": "/pokeapp/static/js/821.88f3cb9d.chunk.js.map",
     "147.511afc39.chunk.js.map": "/pokeapp/static/js/147.511afc39.chunk.js.map",
     "753.1c59de25.chunk.js.map": "/pokeapp/static/js/753.1c59de25.chunk.js.map"
   },
   "entrypoints": [
-    "static/js/main.34c8e329.js"
+    "static/js/main.0517e0b9.js"
   ]
 }
