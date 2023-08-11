@@ -65,7 +65,6 @@ const PokemonCard = ({ name }) => {
 	} = data;
 
 	const {
-		id,
 		height,
 		weight,
 		sprites = {},
