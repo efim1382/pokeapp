@@ -4,7 +4,7 @@ import { NavLink } from "react-router-dom";
 import Height from "./Height";
 import Weight from "./Weight";
 import { usePokemonDetails } from "hooks/pokemonQueries";
-import { getAvatarUrl } from "helpers/imageHelpers";
+import { getAvatarUrl, getDescription } from "helpers/pokemonHelpers";
 import styled from "styled-components";
 
 const Card = styled.div`
@@ -60,18 +60,31 @@ const PokemonCard = ({ name }) => {
 	}
 
 	const {
+		details = {},
+		species = {},
+	} = data;
+
+	const {
 		id,
 		height,
 		weight,
-	} = data;
+		types = [],
+	} = details;
 
+	const { flavor_text_entries } = species;
+	const description = getDescription(flavor_text_entries);
 	const avatarUrl = getAvatarUrl(id);
 
 	return (
 		<NavLink to={`/pokemon/${name}/`}>
 			<Card data-testid="pokemon-card">
 				<TopBar>
-					<div></div>
+					<div>
+						{types.map((item) => (
+							<span key={item.slot}>{item.type.name}</span>
+						))}
+					</div>
+
 					<div className="stats">
 						<span className="stat-item"><Weight /> <span className="value" data-testid="pokemon-card-weight">{weight}</span></span>
 						<span className="stat-item"><Height /><span className="value">{height}</span></span>
@@ -84,6 +97,7 @@ const PokemonCard = ({ name }) => {
 				/>
 
 				<p>{name}</p>
+				<p>{description}</p>
 			</Card>
 		</NavLink>
 	);

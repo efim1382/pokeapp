@@ -10,7 +10,14 @@ import {
 import ThemeProvider from "store/ThemeProvider";
 import router from "./router";
 
-const queryClient = new QueryClient();
+const queryClient = new QueryClient({
+	defaultOptions: {
+		queries: {
+			retry: false,
+		},
+	},
+});
+
 const root = ReactDOM.createRoot(document.getElementById("root"));
 
 root.render(

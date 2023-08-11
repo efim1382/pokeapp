@@ -1,6 +1,11 @@
 import { useQuery } from "react-query";
-import { fetchPokemon, fetchPokemonList, fetchPokemonSpecies } from "api/endpoints";
 import apiClient from "api/apiClient";
+
+import {
+	fetchPokemon,
+	fetchPokemonList,
+	fetchPokemonSpecies,
+} from "api/endpoints";
 
 export const usePokemonList = (options = {}) => {
 	const {
@@ -15,33 +20,23 @@ export const usePokemonList = (options = {}) => {
 };
 
 export const usePokemonDetails = (id) => {
-	return useQuery(
-		["pokemon", id],
-		() => fetchPokemon(id),
-		{ retry: false },
-	);
-};
-
-export const usePokemonSpecies = (id) => {
-	return useQuery(
-		["pokemon-species", id],
-		() => fetchPokemonSpecies(id),
-		{ retry: false },
-	);
-};
-
-export const usePokemonFullDetails = (id) => {
 	const {
 		data: pokemonData = {},
 		isLoading: isPokemonLoading,
 		error: pokemonError,
-	} = usePokemonDetails(id);
+	} = useQuery(
+		["pokemon", id],
+		() => fetchPokemon(id),
+	);
 
 	const {
 		data: species = {},
 		isLoading: isSpeciesLoading,
 		error: speciesError,
-	} = usePokemonSpecies(id);
+	} = useQuery(
+		["pokemon-species", id],
+		() => fetchPokemonSpecies(id),
+	);
 
 	const isLoading = isPokemonLoading || isSpeciesLoading;
 	const error = pokemonError || speciesError;
@@ -61,6 +56,5 @@ export const useCustomRequest = (url) => {
 	return useQuery(
 		["pokemon-custom-request", url],
 		() => apiClient.get(url),
-		{ retry: false },
 	);
 };
