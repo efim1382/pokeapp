@@ -1,6 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-import { RouterProvider } from "react-router-dom";
+import { HashRouter } from "react-router-dom";
 
 import {
 	QueryClient,
@@ -8,7 +8,7 @@ import {
 } from "react-query";
 
 import ThemeProvider from "store/ThemeProvider";
-import router from "./router";
+import Router from "./router";
 
 const queryClient = new QueryClient({
 	defaultOptions: {
@@ -23,7 +23,9 @@ const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
 	<QueryClientProvider client={queryClient}>
 		<ThemeProvider>
-			<RouterProvider router={router} />
+			<HashRouter>
+				<Router />
+			</HashRouter>
 		</ThemeProvider>
 	</QueryClientProvider>
 );

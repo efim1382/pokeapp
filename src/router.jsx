@@ -1,48 +1,45 @@
 import React, { Suspense, lazy } from "react";
-import { createBrowserRouter } from "react-router-dom";
+import { Route, Routes } from "react-router-dom";
 import Layout from "components/Layout";
 
 const NotFoundPage = lazy(() => import("pages/NotFound"));
 const HomePage = lazy(() => import("pages/Home"));
 const DetailsPage = lazy(() => import("pages/Details"));
 
-const routes = [
-	{
-		path: "/",
-		element: <Layout />,
+const Router = () => (
+	<Routes>
+		<Route path="/" element={<Layout />}>
+			<Route
+				path="*"
 
-		children: [
-			{
-				path: "*",
-
-				element: (
+				element={
 					<Suspense fallback="Loading...">
 						<NotFoundPage />
 					</Suspense>
-				),
-			},
+				}
+			/>
 
-			{
-				index: true,
+			<Route
+				index
 
-				element: (
+				element={
 					<Suspense fallback="Loading...">
 						<HomePage />
 					</Suspense>
-				)
-			},
+				}
+			/>
 
-			{
-				path: "pokemon/:pokemonName/",
+			<Route
+				path="/pokemon/:pokemonName/"
 
-				element: (
+				element={
 					<Suspense fallback="Loading...">
 						<DetailsPage />
 					</Suspense>
-				),
-			},
-		]
-	}
-];
+				}
+			/>
+		</Route>
+	</Routes>
+);
 
-export default createBrowserRouter(routes);
+export default Router;
