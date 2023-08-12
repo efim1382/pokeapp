@@ -1,22 +1,22 @@
 {
   "files": {
-    "main.js": "/pokeapp/static/js/main.0517e0b9.js",
+    "main.js": "/pokeapp/static/js/main.aeed77a2.js",
     "static/js/273.2ff55fe7.chunk.js": "/pokeapp/static/js/273.2ff55fe7.chunk.js",
-    "static/js/821.88f3cb9d.chunk.js": "/pokeapp/static/js/821.88f3cb9d.chunk.js",
-    "static/js/147.511afc39.chunk.js": "/pokeapp/static/js/147.511afc39.chunk.js",
-    "static/js/753.1c59de25.chunk.js": "/pokeapp/static/js/753.1c59de25.chunk.js",
+    "static/js/821.416f67dd.chunk.js": "/pokeapp/static/js/821.416f67dd.chunk.js",
+    "static/js/147.d44c5b7c.chunk.js": "/pokeapp/static/js/147.d44c5b7c.chunk.js",
+    "static/js/753.98af6240.chunk.js": "/pokeapp/static/js/753.98af6240.chunk.js",
     "static/media/PTSans-Bold.ttf": "/pokeapp/static/media/PTSans-Bold.610bc32a7e32c292ce59.ttf",
     "static/media/PTSans-Regular.ttf": "/pokeapp/static/media/PTSans-Regular.77e92507394e2309d837.ttf",
     "static/media/logo.svg": "/pokeapp/static/media/logo.1c9774ca26996cee432efa7ab1c44fb7.svg",
     "static/media/search-button.svg": "/pokeapp/static/media/search-button.c28a2d028b57f31ab968bae303a97127.svg",
     "index.html": "/pokeapp/index.html",
-    "main.0517e0b9.js.map": "/pokeapp/static/js/main.0517e0b9.js.map",
+    "main.aeed77a2.js.map": "/pokeapp/static/js/main.aeed77a2.js.map",
     "273.2ff55fe7.chunk.js.map": "/pokeapp/static/js/273.2ff55fe7.chunk.js.map",
-    "821.88f3cb9d.chunk.js.map": "/pokeapp/static/js/821.88f3cb9d.chunk.js.map",
-    "147.511afc39.chunk.js.map": "/pokeapp/static/js/147.511afc39.chunk.js.map",
-    "753.1c59de25.chunk.js.map": "/pokeapp/static/js/753.1c59de25.chunk.js.map"
+    "821.416f67dd.chunk.js.map": "/pokeapp/static/js/821.416f67dd.chunk.js.map",
+    "147.d44c5b7c.chunk.js.map": "/pokeapp/static/js/147.d44c5b7c.chunk.js.map",
+    "753.98af6240.chunk.js.map": "/pokeapp/static/js/753.98af6240.chunk.js.map"
   },
   "entrypoints": [
-    "static/js/main.0517e0b9.js"
+    "static/js/main.aeed77a2.js"
   ]
 }
