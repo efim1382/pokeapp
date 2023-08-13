@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 const IconWrap = styled.div`
-	padding-right: 4px;
+	margin-right: 4px;
 	width: 24px;
 	height: 24px;
 

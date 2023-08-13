@@ -4,6 +4,8 @@ import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import { media } from "styles/mixins/media";
 import { ReactComponent as SearchLogo } from './search-button.svg';
+import { ReactComponent as SearchLogoMobile } from './search-button-mobile.svg';
+import { useMedia } from "hooks/useMedia";
 
 const Form = styled.form`
 	width: 100%;
@@ -12,6 +14,11 @@ const Form = styled.form`
 	border-radius: 64px;
 	background: #FFF;
 	position: relative;
+	margin-left: 16px;
+
+	${media("tablet")} {
+		margin-left: 8px;
+	}
 
 	${media("mobile")} {
 		height: 40px;
@@ -22,7 +29,6 @@ const Form = styled.form`
 		text-decoration: none;
 		width: 100%;
 		padding: 8px 56px 8px 24px;
-		border-radius: 64px;
 		-webkit-appearance: none;
 		height: inherit;
 		flex: 1 1 1px;
@@ -34,6 +40,11 @@ const Form = styled.form`
 `;
 
 const Button = styled.button`
+	box-sizing: border-box;
+	text-decoration: none !important;
+	outline: none;
+	-webkit-appearance: none;
+	border: none;
 	position: absolute;
 	top: 8px;
 	right: 8px;
@@ -41,11 +52,19 @@ const Button = styled.button`
 	height: 40px;
 	cursor: pointer;
 	z-index: 1;
+	border-radius: 50%;
+
+	${media("mobile")} {
+		width: 32px;
+		height: 32px;
+		top: 4px;
+	}
 `;
 
 const SearchForm = () => {
 	const navigate = useNavigate();
 	const [searchValue, setSearchValue] = useState("");
+	const isMobile = useMedia("(max-width: 480px)");
 
 	const handleSearchChange = (event) => setSearchValue(event.target.value);
 
@@ -70,7 +89,7 @@ const SearchForm = () => {
 			/>
 
 			<Button type="submit">
-				<SearchLogo />
+				{isMobile ? <SearchLogoMobile/> : <SearchLogo/>}
 			</Button>
 		</Form>
 	);

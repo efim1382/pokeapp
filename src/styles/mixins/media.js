@@ -6,5 +6,8 @@ export const media = (value) => {
 		"tablet": bp.TABLET,
 		"mobile": bp.MOBILE,
 	};
-	return `@media (max-width: ${bpValue[value]}px)`;
+
+	const breakpoint = bpValue[value] ? bpValue[value] : value;
+
+	return `@media (max-width: ${breakpoint}px)`;
 };

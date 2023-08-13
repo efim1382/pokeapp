@@ -4,6 +4,7 @@ import Button from "components/Button";
 import { usePokemonList } from "hooks/pokemonQueries";
 import CardsContainer from "components/PokemonCard/CardsContainer";
 import CardWrap from "components/PokemonCard/CardWrap";
+import PaginationContainer from "components/Button/PaginationContainer";
 
 const PokemonCard = lazy(() => import("components/PokemonCard"));
 
@@ -40,7 +41,7 @@ const Home = () => {
 	};
 
 	if (isLoading) {
-		return <div>Loading...</div>;
+		return <CardsContainer>Loading...</CardsContainer>;
 	}
 
 	if (error) {
@@ -48,7 +49,7 @@ const Home = () => {
 	}
 
 	return (
-		<div>
+		<>
 			<CardsContainer>
 				{results.map((pokemon) => (
 					<Suspense key={pokemon.name} fallback="Loading...">
@@ -59,22 +60,28 @@ const Home = () => {
 				))}
 			</CardsContainer>
 
-			{previous && (
-				<Button
-					onClick={handlePreviousPageClick}
-				>
-					Prev
-				</Button>
-			)}
 
-			{next && (
-				<Button
-					onClick={handleNextPageClick}
-				>
-					Next
-				</Button>
-			)}
-		</div>
+			<PaginationContainer>
+				{previous && (
+					<Button
+						left
+						onClick={handlePreviousPageClick}
+					>
+						Prev
+					</Button>
+				)}
+
+				{next && (
+					<Button
+						right
+						onClick={handleNextPageClick}
+					>
+						Next
+					</Button>
+				)}
+			</PaginationContainer>
+
+		</>
 	);
 };
 

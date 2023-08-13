@@ -1,10 +1,18 @@
 import React, { useContext } from "react";
 import styled, { useTheme } from "styled-components";
 import { ThemePreferenceContext } from "store/ThemeProvider";
+import { media } from "styles/mixins/media";
 
 const StyledToggle = styled.div`
 	border-radius: 50%;
+	width: 42px;
+	height: 42px;
 	cursor: pointer;
+	margin-left: 16px;
+
+	${media("tablet")} {
+		margin-left: 8px;
+	}
 `;
 
 const ThemeSwitcher = () => {

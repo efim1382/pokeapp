@@ -15,8 +15,9 @@ export const light = {
 		bg: colors.WHITE,
 		title: colors.GREEN,
 		desc: colors.GRAY,
-		stat: colors.BG_LIGHT,
-		statIcon: colors.RED
+		stat: colors.DARK,
+		statIcon: colors.RED,
+		loading: "linear-gradient( 270deg, #F1F1F1 30%, #fff 50%, #F1F1F1 70%)"
 	},
 
 	button: {
@@ -41,7 +42,8 @@ export const dark = {
 		title: colors.BLUE,
 		desc: colors.GRAY,
 		stat: colors.BLUE,
-		statIcon: colors.BLUE
+		statIcon: colors.BLUE,
+		loading: "linear-gradient( 270deg, #333 30%, #5C5E61 50%, #333 70%)",
 	},
 
 	button: {
