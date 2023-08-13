@@ -5,6 +5,10 @@ import Evolution from "./Evolution";
 import Stat from "./Stat";
 import { usePokemonDetails } from "hooks/pokemonQueries";
 import { getDescription } from "helpers/pokemonHelpers";
+import CardDetails from "components/CardDetails";
+import Row from "components/Layout/Row";
+import Col from "components/Layout/Col";
+import Button from "components/Button";
 
 const maxCaptureRate = 255;
 
@@ -36,6 +40,7 @@ const Details = () => {
 	const {
 		id,
 		name,
+		height,
 		weight,
 		sprites = {},
 		types = [],
@@ -58,73 +63,95 @@ const Details = () => {
 	const isPreviousPokemonExist = previousPokemonId > 0;
 	const description = getDescription(flavor_text_entries);
 	const catchRate = ((capture_rate * 100) / maxCaptureRate).toFixed(1);
+	const pokemonId = String(id).padStart(4, 0);
 
 	return (
-		<div>
-			<img width="300" src={sprites.other.dream_world.front_default} alt={pokemonName} />
-			<div>Name: {name}</div>
-			<div data-testid="pokemon-weight">Weight: {weight}</div>
+		<Row>
+			<Col
+				width="100%"
+				maxWidth="342px"
+				margin="0 16px 0 0"
+			>
+				<CardDetails
+					types={types}
+					src={sprites.other.dream_world.front_default}
+					name={name}
+					pokemonId={pokemonId}
+					weight={weight}
+					height={height}
+				/>
 
-			{types.map((item) => (
-				<span key={item.slot}>{item.type.name}</span>
-			))}
+				<Row>
+					<Button left>
 
-			{stats.map((item) => (
-				<Stat key={item.stat.name} name={item.stat.name} value={item.base_stat} />
-			))}
+					</Button>
+					<Button right>
 
-			<div>
-				<p>Versions</p>
+					</Button>
+				</Row>
+			</Col>
 
-				<div>
-					{varieties.map((version) => (
-						<div key={version.pokemon.name}>
-							<NavLink to={`/pokemon/${version.pokemon.name}`}>{version.pokemon.name}</NavLink>
-						</div>
-					))}
-				</div>
-			</div>
-
-			<div>
-				<p>Story</p>
-				<p>{description}</p>
-			</div>
-
-			<div>
-				<p>Abilities</p>
-
-				<div>
-					{abilities.map((item) => (
-						<span key={item.ability.name}>{item.ability.name}</span>
-					))}
-				</div>
-			</div>
-
-			<div>
-				<p>Catch rate</p>
-				<p>{catchRate}%</p>
-			</div>
-
-			<div>
-				<p>Egg group</p>
+			<Col
+				flex="1 1 .01%"
+				width="auto"
+			>
+				{stats.map((item) => (
+					<Stat key={item.stat.name} name={item.stat.name} value={item.base_stat} />
+				))}
 
 				<div>
-					{egg_groups.map((item) => (
-						<span key={item.name}>{item.name}</span>
-					))}
+					<p>Versions</p>
+
+					<div>
+						{varieties.map((version) => (
+							<div key={version.pokemon.name}>
+								<NavLink to={`/pokemon/${version.pokemon.name}`}>{version.pokemon.name}</NavLink>
+							</div>
+						))}
+					</div>
 				</div>
-			</div>
 
-			{isPreviousPokemonExist && (
-				<NavLink to={`/pokemon/${previousPokemonId}/`}>prev #{formattedPreviousPokemonId}</NavLink>
-			)}
+				<div>
+					<p>Story</p>
+					<p>{description}</p>
+				</div>
 
-			<NavLink to={`/pokemon/${nextPokemonId}/`}>next #{formattedNextPokemonId}</NavLink>
+				<div>
+					<p>Abilities</p>
 
-			{evolution_chain.url && (
-				<Evolution url={evolution_chain.url} />
-			)}
-		</div>
+					<div>
+						{abilities.map((item) => (
+							<span key={item.ability.name}>{item.ability.name}</span>
+						))}
+					</div>
+				</div>
+
+				<div>
+					<p>Catch rate</p>
+					<p>{catchRate}%</p>
+				</div>
+
+				<div>
+					<p>Egg group</p>
+
+					<div>
+						{egg_groups.map((item) => (
+							<span key={item.name}>{item.name}</span>
+						))}
+					</div>
+				</div>
+
+				{isPreviousPokemonExist && (
+					<NavLink to={`/pokemon/${previousPokemonId}/`}>prev #{formattedPreviousPokemonId}</NavLink>
+				)}
+
+				<NavLink to={`/pokemon/${nextPokemonId}/`}>next #{formattedNextPokemonId}</NavLink>
+
+				{evolution_chain.url && (
+					<Evolution url={evolution_chain.url} />
+				)}
+			</Col>
+		</Row>
 	);
 };
 
