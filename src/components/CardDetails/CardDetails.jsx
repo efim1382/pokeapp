@@ -48,7 +48,7 @@ const StatCol = styled(Col)`
 	width: 50%;
 	padding: 16px 6px 0;
 
-	${media("tablet")} {
+	${media("mobile")} {
 		width: 100%;
 	}
 
