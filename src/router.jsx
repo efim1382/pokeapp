@@ -1,6 +1,18 @@
 import React, { Suspense, lazy } from "react";
 import { Route, Routes } from "react-router-dom";
-import Layout from "components/Layout";
+import Layout, {Row} from "components/Layout";
+import * as L from "./components/Loader";
+
+const Loader = () => (
+	<Row
+		$minWidth="100%"
+		$minHeight="80vh"
+		$justifyContent="center"
+		$alignItems="center"
+	>
+		<L />
+	</Row>
+);
 
 const NotFoundPage = lazy(() => import("pages/NotFound"));
 const HomePage = lazy(() => import("pages/Home"));
@@ -13,7 +25,7 @@ const Router = () => (
 				path="*"
 
 				element={
-					<Suspense fallback="Loading...">
+					<Suspense fallback={Loader}>
 						<NotFoundPage />
 					</Suspense>
 				}
@@ -23,7 +35,7 @@ const Router = () => (
 				index
 
 				element={
-					<Suspense fallback="Loading...">
+					<Suspense fallback={Loader}>
 						<HomePage />
 					</Suspense>
 				}
@@ -33,7 +45,7 @@ const Router = () => (
 				path="/pokemon/:pokemonName/"
 
 				element={
-					<Suspense fallback="Loading...">
+					<Suspense fallback={Loader}>
 						<DetailsPage />
 					</Suspense>
 				}

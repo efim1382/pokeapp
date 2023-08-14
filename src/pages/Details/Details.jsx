@@ -10,7 +10,8 @@ import Button from "components/Button";
 import { Container as PaginationContainer } from "components/Button";
 import TableRow from "components/Table";
 import styled from "styled-components";
-import { media } from "../../styles/mixins/media";
+import { media } from "styles/mixins/media";
+import Loader from "components/Loader";
 
 const maxCaptureRate = 255;
 
@@ -65,7 +66,16 @@ const Details = () => {
 	} = usePokemonDetails(pokemonName);
 
 	if (isLoading) {
-		return <div>Loading...</div>;
+		return (
+			<Row
+				$minWidth="100%"
+				$minHeight="80vh"
+				$justifyContent="center"
+				$alignItems="center"
+			>
+				<Loader />
+			</Row>
+		);
 	}
 
 	if (error) {

@@ -1,6 +1,7 @@
 import React, { Fragment, Suspense, lazy } from "react";
 import { useSearchParams } from "react-router-dom";
 import Button, { Container as PaginationContainer } from "components/Button";
+import Loader from "components/Loader";
 
 import {
 	Container as CardsContainer,
@@ -9,6 +10,7 @@ import {
 } from "components/PokemonCard";
 
 import { usePokemonList } from "hooks/pokemonQueries";
+import { Row } from "components/Layout";
 
 const PokemonCard = lazy(() => import("components/PokemonCard"));
 
@@ -45,7 +47,16 @@ const Home = () => {
 	};
 
 	if (isLoading) {
-		return <CardsContainer>Loading...</CardsContainer>;
+		return (
+			<Row
+				$minWidth="100%"
+				$minHeight="80vh"
+				$justifyContent="center"
+				$alignItems="center"
+			>
+				<Loader />
+			</Row>
+		);
 	}
 
 	if (error) {
