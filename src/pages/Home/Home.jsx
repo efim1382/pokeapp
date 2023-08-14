@@ -5,6 +5,7 @@ import Button, { Container as PaginationContainer } from "components/Button";
 import {
 	Container as CardsContainer,
 	Wrapper as CardWrapper,
+	Loading as CardLoading,
 } from "components/PokemonCard";
 
 import { usePokemonList } from "hooks/pokemonQueries";
@@ -55,11 +56,11 @@ const Home = () => {
 		<Fragment>
 			<CardsContainer>
 				{results.map((pokemon) => (
-					<Suspense key={pokemon.name} fallback="Loading...">
-						<CardWrapper>
+					<CardWrapper key={pokemon.name}>
+						<Suspense fallback={<CardLoading />}>
 							<PokemonCard name={pokemon.name} />
-						</CardWrapper>
-					</Suspense>
+						</Suspense>
+					</CardWrapper>
 				))}
 			</CardsContainer>
 

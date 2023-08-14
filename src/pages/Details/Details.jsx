@@ -146,7 +146,13 @@ const Details = () => {
 				>
 					<Row $margin="0 -4px" >
 						{abilities.map((item) => (
-							<Col $padding="0 4px" key={item.ability.name}>{item.ability.name}</Col>
+							<Col
+								$padding="0 4px"
+								key={item.ability.name}
+								data-testid="ability"
+							>
+								{item.ability.name}
+							</Col>
 						))}
 					</Row>
 				</TableRow>
