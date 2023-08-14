@@ -82,7 +82,7 @@ const CardDetails = ({types, src, name, pokemonId, weight, height}) => {
 			>
 				<div className="stat-item">
 					<Weight />
-					<span className="value">{weight}</span>
+					<span data-testid="pokemon-weight" className="value">{weight}</span>
 				</div>
 				<div className="stat-item">
 					<Height />

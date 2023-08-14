@@ -1,11 +1,19 @@
 import * as colors from "./variables/colors";
 
+const detectIsDarkMode = () => {
+	if (!window.matchMedia) {
+		return false;
+	}
+
+	return window.matchMedia("(prefers-color-scheme: dark)").matches;
+};
+
 export const keys = {
 	light: "light",
 	dark: "dark",
 };
 
-export const defaultTheme = window.matchMedia("(prefers-color-scheme: dark)").matches
+export const defaultTheme = detectIsDarkMode()
 	? keys.dark
 	: keys.light;
 

@@ -4,6 +4,7 @@ import { MemoryRouter, Route, Routes } from "react-router-dom";
 import { QueryClient, QueryClientProvider } from "react-query";
 import Details from "pages/Details/index";
 import "@testing-library/jest-dom/extend-expect";
+import mockMatchMedia from "__mocks__/matchMedia";
 import { pokemonMock, speciesMock } from "api/mocks";
 
 const queryClient = new QueryClient();
@@ -14,6 +15,8 @@ beforeAll(() => {
 });
 
 describe("Details page", () => {
+	mockMatchMedia();
+
 	it("renders weight correctly", () => {
 		render(
 			<QueryClientProvider client={queryClient}>

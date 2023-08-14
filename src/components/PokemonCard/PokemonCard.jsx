@@ -120,7 +120,7 @@ const PokemonCard = ({ name }) => {
 
 						<span className="stat-item">
 							<Weight />
-							<span className="value" data-testid="pokemon-card-weight">{weight}</span>
+							<span className="value">{weight}</span>
 						</span>
 					</Row>
 				)}
@@ -130,10 +130,11 @@ const PokemonCard = ({ name }) => {
 				<PokemonIllustration
 					$src={pokemonImageUrl}
 					$pokemonId={pokemonId}
+					data-testid="illustration"
 				/>
 			</NavLink>
 
-			<h2 className="name">{name}</h2>
+			<h2 className="name" data-testid="pokemon-name">{name}</h2>
 			<span className="desc">{description}</span>
 		</Card>
 	);

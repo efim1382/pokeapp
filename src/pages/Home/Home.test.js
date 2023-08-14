@@ -3,8 +3,9 @@ import { render, screen, waitFor } from "@testing-library/react";
 import { MemoryRouter, Route, Routes } from "react-router-dom";
 import { QueryClient, QueryClientProvider } from "react-query";
 import ThemeProvider from "store/ThemeProvider";
-import Home from "pages/Home/index";
+import Home from "pages/Home";
 import "@testing-library/jest-dom/extend-expect";
+import mockMatchMedia from "__mocks__/matchMedia";
 import { pokemonMock, pokemonListMock } from "api/mocks";
 
 const queryClient = new QueryClient();
@@ -16,6 +17,8 @@ beforeAll(() => {
 
 describe("Home page", () => {
 	it("renders cards", async () => {
+		mockMatchMedia();
+
 		render(
 			<QueryClientProvider client={queryClient}>
 				<ThemeProvider>
@@ -34,7 +37,9 @@ describe("Home page", () => {
 		});
 	});
 
-	it("renders card data correctly", async () => {
+	it("renders main data correctly", async () => {
+		mockMatchMedia();
+
 		render(
 			<QueryClientProvider client={queryClient}>
 				<ThemeProvider>
@@ -48,8 +53,14 @@ describe("Home page", () => {
 		);
 
 		await waitFor(() => {
-			const weightElement = screen.getAllByTestId("pokemon-card-weight")[0];
-			expect(weightElement).toHaveTextContent(pokemonMock.weight);
+			const components = screen.getAllByTestId("pokemon-card");
+			expect(components).toHaveLength(pokemonListMock.results.length);
 		});
+
+		const illustration = screen.getAllByTestId("illustration")[0];
+		expect(illustration).toBeInTheDocument();
+
+		const pokemonName = screen.getAllByTestId("pokemon-name")[0];
+		expect(pokemonName).toHaveTextContent(pokemonMock.name);
 	});
 });
