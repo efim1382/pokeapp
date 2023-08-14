@@ -1,6 +1,7 @@
 import styled from "styled-components";
+import {Row} from "components/Badge";
 
-const Container = styled.div`
+const Container = styled(Row)`
 	display: flex;
 	margin: 0 -8px;
 	justify-content: center;

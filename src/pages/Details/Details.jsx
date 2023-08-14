@@ -14,18 +14,40 @@ import { media } from "../../styles/mixins/media";
 
 const maxCaptureRate = 255;
 
-const LinksRow = styled(PaginationContainer)`
-	justify-content: space-around;
-	padding-top: 16px;
+const CardDetailsWrap = styled(Col)`
+	width: 100%;
+	max-width: 342px;
+	min-width: 288px;
+	margin: 0 16px 0 0;
 
-	${media("mobile")} {
-		order: 0;
+	${media(768)} {
+		margin: 0 0 16px 0;
+		max-width: 100%;
+	}
+`;
+
+const TableWrap = styled(Col)`
+	flex: 1 1 .01%;
+	width: auto;
+	overflow: hidden;
+	border-radius: 16px;
+`;
+
+const LinksRow = styled(PaginationContainer)`
+	justify-content: center;
+	padding-top: 16px;
+	min-width: 100%;
+	width: auto;
+
+	${media(768)} {
+		order: -1;
 		padding-top: 0;
 		padding-bottom: 16px;
 	}
 
 	button {
 		flex: 1 1 auto;
+		margin:  0 8px;
 	}
 `;
 
@@ -88,11 +110,7 @@ const Details = () => {
 
 	return (
 		<Row>
-			<Col
-				$width="100%"
-				$maxWidth="342px"
-				$margin="0 16px 0 0"
-			>
+			<CardDetailsWrap>
 				<Row>
 					<CardDetails
 						types={types}
@@ -117,12 +135,9 @@ const Details = () => {
 
 					</LinksRow>
 				</Row>
-			</Col>
+			</CardDetailsWrap>
 
-			<Col
-				$flex="1 1 .01%"
-				$width="auto"
-			>
+			<TableWrap>
 				<TableRow
 					title="Versions"
 				>
@@ -177,14 +192,14 @@ const Details = () => {
 				<TableRow
 					title="Evolution"
 				>
-					<Row $margin="-24px -20px 0">
+					<Col $margin="-24px -20px 0">
 						{evolution_chain.url && (
 							<Evolution url={evolution_chain.url} />
 						)}
-					</Row>
+					</Col>
 				</TableRow>
 
-			</Col>
+			</TableWrap>
 		</Row>
 	);
 };

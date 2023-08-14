@@ -19,6 +19,7 @@ const Col = styled.div`
 	color: ${({$color}) => $color};
 	padding: ${({$padding}) => $padding};
 	margin: ${({$margin}) => $margin};
+	overflow: ${({$overflow}) => $overflow};
 `;
 
 export default Col;

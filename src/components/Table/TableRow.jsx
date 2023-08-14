@@ -33,7 +33,9 @@ const Value = styled(Col)`
 	font-size: 16px;
 	font-style: normal;
 	font-weight: 400;
-	line-height: 24px;`;
+	line-height: 24px;
+	max-width: 100%;
+`;
 
 
 const TableRow = ({title, children}) => {
