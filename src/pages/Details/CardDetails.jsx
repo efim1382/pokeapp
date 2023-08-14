@@ -129,20 +129,20 @@ CardDetails.propTypes = {
 	stats: PropTypes.arrayOf(PropTypes.shape({
 		base_stat: PropTypes.number,
 
-		stat: PropTypes.objectOf({
+		stat: PropTypes.shape({
 			name: PropTypes.string,
 		}),
 	})).isRequired,
 
 	types: PropTypes.arrayOf(PropTypes.shape({
-		type: PropTypes.objectOf({
+		type: PropTypes.shape({
 			name: PropTypes.string,
 		}),
 	})).isRequired,
 
-	sprites: PropTypes.objectOf({
-		other: PropTypes.objectOf({
-			dream_world: PropTypes.objectOf({
+	sprites: PropTypes.shape({
+		other: PropTypes.shape({
+			dream_world: PropTypes.shape({
 				front_default: PropTypes.string,
 			}),
 		}),

@@ -21,7 +21,7 @@ const Container = styled.div`
 		top: 50%;
 		left: 50%;
 		transform: translate(-50%, -50%);
-		background-image: url(${({pokemonImageUrl}) => pokemonImageUrl});
+		background-image: url(${({$url}) => $url});
 		background-repeat: no-repeat;
 		background-size: contain;
 		background-position: center;
@@ -67,7 +67,7 @@ const EvolutionPokemon = ({ name }) => {
 
 	return (
 		<Container
-			pokemonImageUrl={pokemonImageUrl}
+			$url={pokemonImageUrl}
 		>
 			{isLightTheme ? (
 				<BubbleIllustrationLight />

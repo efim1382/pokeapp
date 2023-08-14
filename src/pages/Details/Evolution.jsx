@@ -60,8 +60,8 @@ const Evolution = ({ url }) => {
 						$overflow="auto"
 					>
 						{chain.map((pokemon) => (
-							<Col key={key} $padding="24px 20px 0">
-								<EvolutionPokemon key={pokemon} name={pokemon} />
+							<Col key={pokemon} $padding="24px 20px 0">
+								<EvolutionPokemon name={pokemon} />
 							</Col>
 						))}
 					</Row>
