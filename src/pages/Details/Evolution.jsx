@@ -1,5 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
+import EvolutionPokemon from "./EvolutionPokemon";
 import { useCustomRequest } from "hooks/pokemonQueries";
 
 const generateEvolutionRows = (chain) => {
@@ -56,7 +57,7 @@ const Evolution = ({ url }) => {
 				return (
 					<div key={key}>
 						{chain.map((pokemon) => (
-							<span key={pokemon}>{pokemon}</span>
+							<EvolutionPokemon key={pokemon} name={pokemon} />
 						))}
 					</div>
 				);

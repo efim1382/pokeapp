@@ -19,15 +19,19 @@ export const usePokemonList = (options = {}) => {
 	);
 };
 
+export const usePokemonData = (id) => {
+	return useQuery(
+		["pokemon", id],
+		() => fetchPokemon(id),
+	);
+};
+
 export const usePokemonDetails = (id) => {
 	const {
 		data: pokemonData = {},
 		isLoading: isPokemonLoading,
 		error: pokemonError,
-	} = useQuery(
-		["pokemon", id],
-		() => fetchPokemon(id),
-	);
+	} = usePokemonData(id);
 
 	const specieName = pokemonData?.species?.name;
 
