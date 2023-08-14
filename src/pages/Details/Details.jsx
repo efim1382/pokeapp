@@ -4,7 +4,7 @@ import NotFound from "pages/NotFound";
 import { Row, Col } from "components/Layout";
 import Button, { Container as PaginationContainer } from "components/Button";
 import CardDetails from "./CardDetails";
-import Evolution from "./Evolution";
+import EvolutionRow from "./EvolutionRow";
 import TableRow from "./components/TableRow";
 import { usePokemonDetails } from "hooks/pokemonQueries";
 import { getDescription, getBeautifiedId } from "helpers/pokemonHelpers";
@@ -113,7 +113,9 @@ const Details = () => {
 	const catchRate = ((capture_rate * 100) / maxCaptureRate).toFixed(1);
 
 	return (
-		<Row>
+		<Row
+			$alignItems="flex-start"
+		>
 			<CardDetailsWrapper>
 				<Row>
 					<CardDetails {...details} />
@@ -183,13 +185,9 @@ const Details = () => {
 					</Row>
 				</TableRow>
 
-				<TableRow title="Evolution">
-					<Col $margin="-24px -20px 0">
-						{evolution_chain.url && (
-							<Evolution url={evolution_chain.url} />
-						)}
-					</Col>
-				</TableRow>
+				{evolution_chain.url && (
+					<EvolutionRow url={evolution_chain.url} />
+				)}
 			</TableWrap>
 		</Row>
 	);

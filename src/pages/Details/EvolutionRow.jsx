@@ -1,7 +1,8 @@
-import React, { Fragment } from "react";
+import React from "react";
 import PropTypes from "prop-types";
 import { NavLink } from "react-router-dom";
 import { Col, Row } from "components/Layout";
+import TableRow from "pages/Details/components/TableRow";
 import EvolutionPokemon from "pages/Details/components/EvolutionPokemon";
 import { useCustomRequest } from "hooks/pokemonQueries";
 
@@ -26,7 +27,7 @@ const generateEvolutionRows = (chain) => {
 	return rows;
 };
 
-const Evolution = ({ url }) => {
+const EvolutionRow = ({ url }) => {
 	const {
 		data = {},
 		isLoading,
@@ -48,32 +49,34 @@ const Evolution = ({ url }) => {
 	const evolutionRows = generateEvolutionRows(chain);
 
 	return (
-		<Fragment>
-			{evolutionRows.map((chain) => {
-				const key = chain.join('-');
+		<TableRow title="Evolution">
+			<Col $margin="-24px -20px 0">
+				{evolutionRows.map((chain) => {
+					const key = chain.join('-');
 
-				return (
-					<Row
-						key={key}
-						$flexWrap="nowrap"
-						$overflow="auto"
-					>
-						{chain.map((pokemon) => (
-							<Col key={pokemon} $padding="24px 20px 0">
-								<NavLink to={`/pokemon/${pokemon}/`}>
-									<EvolutionPokemon name={pokemon} />
-								</NavLink>
-							</Col>
-						))}
-					</Row>
-				);
-			})}
-		</Fragment>
+					return (
+						<Row
+							key={key}
+							$flexWrap="nowrap"
+							$overflow="auto"
+						>
+							{chain.map((pokemon) => (
+								<Col key={pokemon} $padding="24px 20px 0">
+									<NavLink to={`/pokemon/${pokemon}/`}>
+										<EvolutionPokemon name={pokemon} />
+									</NavLink>
+								</Col>
+							))}
+						</Row>
+					);
+				})}
+			</Col>
+		</TableRow>
 	);
 };
 
-Evolution.propTypes = {
+EvolutionRow.propTypes = {
 	url: PropTypes.string.isRequired,
 };
 
-export default Evolution;
+export default EvolutionRow;
