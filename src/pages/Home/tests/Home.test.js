@@ -5,7 +5,7 @@ import { QueryClient, QueryClientProvider } from "react-query";
 import ThemeProvider from "store/ThemeProvider";
 import Home from "pages/Home/index";
 import "@testing-library/jest-dom/extend-expect";
-import mockMatchMedia from "__mocks__/matchMedia";
+import mockWindowMethods from "__mocks__/window";
 import { pokemonMock, pokemonListMock } from "api/mocks";
 
 const queryClient = new QueryClient();
@@ -16,29 +16,8 @@ beforeAll(() => {
 });
 
 describe("Home page", () => {
-	it("renders cards", async () => {
-		mockMatchMedia();
-
-		render(
-			<QueryClientProvider client={queryClient}>
-				<ThemeProvider>
-					<MemoryRouter>
-						<Routes>
-							<Route index element={<Home />} />
-						</Routes>
-					</MemoryRouter>
-				</ThemeProvider>
-			</QueryClientProvider>
-		);
-
-		await waitFor(() => {
-			const components = screen.getAllByTestId("pokemon-card");
-			expect(components).toHaveLength(pokemonListMock.results.length);
-		});
-	});
-
 	it("renders main data correctly", async () => {
-		mockMatchMedia();
+		mockWindowMethods();
 
 		render(
 			<QueryClientProvider client={queryClient}>

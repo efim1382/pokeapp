@@ -5,7 +5,7 @@ import Details from "pages/Details/index";
 import ThemeProvider from "store/ThemeProvider";
 import { render, screen, waitFor } from "@testing-library/react";
 import "@testing-library/jest-dom/extend-expect";
-import mockMatchMedia from "__mocks__/matchMedia";
+import { mockMatchMedia } from "__mocks__/window";
 import { pokemonMock, speciesMock } from "api/mocks";
 
 const queryClient = new QueryClient();
