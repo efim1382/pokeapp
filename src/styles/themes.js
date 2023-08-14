@@ -20,6 +20,7 @@ export const defaultTheme = detectIsDarkMode()
 export const light = {
 	header: colors.RED,
 	bodyBg: colors.BG_LIGHT,
+	link: colors.GREEN,
 
 	card: {
 		bg: colors.WHITE,
@@ -40,12 +41,23 @@ export const light = {
 		topColor: "#3E3E3E",
 		line: "#252525",
 		circle: "#252525"
-	}
+	},
+	table: {
+		bgFirst: colors.WHITE,
+		bgSecond: "#FBFBFB",
+		title: colors.BLACK,
+		value: "#383838",
+	},
+	stat: {
+		text: "#383838",
+		progressBar: colors.RED,
+	},
 };
 
 export const dark = {
 	header: colors.DARK,
 	bodyBg: colors.BG_DARK,
+	link: colors.BLUE,
 
 	card: {
 		bg: colors.DARK,
@@ -66,6 +78,16 @@ export const dark = {
 		topColor: "#F8F8F8",
 		line: "#FF4C41",
 		circle: "#FF4C41"
+	},
+	table: {
+		bgFirst: "#383A3F",
+		bgSecond: colors.DARK_SECONDARY,
+		title: colors.WHITE,
+		value: colors.GRAY,
+	},
+	stat: {
+		text: colors.GRAY,
+		progressBar: colors.BLUE
 	},
 };
 

@@ -2,14 +2,37 @@ import React from "react";
 import { useParams, NavLink } from "react-router-dom";
 import NotFound from "pages/NotFound";
 import Evolution from "./Evolution";
-import Stat from "./Stat";
 import { usePokemonDetails } from "hooks/pokemonQueries";
 import { getDescription } from "helpers/pokemonHelpers";
 import CardDetails from "components/CardDetails";
 import { Row, Col } from "components/Layout";
 import Button from "components/Button";
+import { Container as PaginationContainer } from "components/Button";
+import TableRow from "components/Table";
+import styled from "styled-components";
+import { media } from "../../styles/mixins/media";
+import Bubble from "../../components/Bubble";
 
 const maxCaptureRate = 255;
+
+const LinksRow = styled(PaginationContainer)`
+	justify-content: space-around;
+	padding-top: 16px;
+
+	${media("mobile")} {
+		order: 0;
+		padding-top: 0;
+		padding-bottom: 16px;
+	}
+
+	button {
+		flex: 1 1 auto;
+	}
+`;
+
+const Link = styled(NavLink)`
+	text-decoration: none;
+`;
 
 const Details = () => {
 	const { pokemonName } = useParams();
@@ -71,22 +94,29 @@ const Details = () => {
 				$maxWidth="342px"
 				$margin="0 16px 0 0"
 			>
-				<CardDetails
-					types={types}
-					src={sprites.other.dream_world.front_default}
-					name={name}
-					pokemonId={pokemonId}
-					weight={weight}
-					height={height}
-				/>
-
 				<Row>
-					<Button withLeftArrow>
+					<CardDetails
+						types={types}
+						src={sprites.other.dream_world.front_default}
+						name={name}
+						pokemonId={pokemonId}
+						weight={weight}
+						height={height}
+						stats={stats}
+					/>
 
-					</Button>
-					<Button withRightArrow>
+					<LinksRow>
+						{isPreviousPokemonExist && (
+							<Button withLeftArrow>
+								<Link to={`/pokemon/${previousPokemonId}/`}>Back #{formattedPreviousPokemonId}</Link>
+							</Button>
+						)}
 
-					</Button>
+						<Button withRightArrow>
+							<Link to={`/pokemon/${nextPokemonId}/`}>Next #{formattedNextPokemonId}</Link>
+						</Button>
+
+					</LinksRow>
 				</Row>
 			</Col>
 
@@ -94,61 +124,64 @@ const Details = () => {
 				$flex="1 1 .01%"
 				$width="auto"
 			>
-				{stats.map((item) => (
-					<Stat key={item.stat.name} name={item.stat.name} value={item.base_stat} />
-				))}
-
-				<div>
-					<p>Versions</p>
-
-					<div>
+				<TableRow
+					title="Versions"
+				>
+					<Row  $margin="0 -16px">
 						{varieties.map((version) => (
-							<div key={version.pokemon.name}>
+							<Col $padding="0 16px" key={version.pokemon.name}>
 								<NavLink to={`/pokemon/${version.pokemon.name}`}>{version.pokemon.name}</NavLink>
-							</div>
+							</Col>
 						))}
-					</div>
-				</div>
+					</Row>
 
-				<div>
-					<p>Story</p>
-					<p>{description}</p>
-				</div>
+				</TableRow>
+				<TableRow
+					title="Story"
+				>
+					{description}
+				</TableRow>
 
-				<div>
-					<p>Abilities</p>
-
-					<div>
+				<TableRow
+					title="Abilities"
+				>
+					<Row $margin="0 -4px" >
 						{abilities.map((item) => (
-							<span key={item.ability.name}>{item.ability.name}</span>
+							<Col $padding="0 4px" key={item.ability.name}>{item.ability.name}</Col>
 						))}
-					</div>
-				</div>
+					</Row>
+				</TableRow>
 
-				<div>
-					<p>Catch rate</p>
-					<p>{catchRate}%</p>
-				</div>
+				<TableRow
+					title="Catch rate"
+				>
+					{catchRate}%
+				</TableRow>
 
-				<div>
-					<p>Egg group</p>
+				<TableRow
+					title="Egg group"
+				>
 
-					<div>
+					<Row $margin="0 -4px" >
 						{egg_groups.map((item) => (
-							<span key={item.name}>{item.name}</span>
+							<Col $padding="0 4px" key={item.name}>{item.name}</Col>
 						))}
-					</div>
-				</div>
+					</Row>
+				</TableRow>
 
-				{isPreviousPokemonExist && (
-					<NavLink to={`/pokemon/${previousPokemonId}/`}>prev #{formattedPreviousPokemonId}</NavLink>
-				)}
+				<TableRow
+					title="Evolution"
+				>
+					<Row $margin="-24px -20px 0">
+						{evolution_chain.url && (
+							<Col $maxWidth="190px" $padding="24px 20px 0">
+								<Evolution url={evolution_chain.url} />
+							</Col>
 
-				<NavLink to={`/pokemon/${nextPokemonId}/`}>next #{formattedNextPokemonId}</NavLink>
+						)}
+					</Row>
+				</TableRow>
 
-				{evolution_chain.url && (
-					<Evolution url={evolution_chain.url} />
-				)}
 			</Col>
 		</Row>
 	);

@@ -4,14 +4,15 @@ import PokemonIllustration from "components/PokemonIllustration";
 import Badge, { Row as BadgesRow } from "components/Badge";
 import styled from "styled-components";
 import { media } from "styles/mixins/media";
-import { Row } from "components/Layout";
 import Height from "components/Icons/Height";
 import Weight from "components/Icons/Weight";
+import Stat from "components/Stat";
+import { Col, Row } from "components/Layout";
+import { getStats } from "./CardDetails.config";
 
 const Card = styled.div`
 	display: flex;
 	width: 100%;
-	height: 100%;
 	padding: 16px;
 	flex-direction: column;
 	align-items: center;
@@ -43,6 +44,16 @@ const Card = styled.div`
 
 `;
 
+const StatCol = styled(Col)`
+	width: 50%;
+	padding: 16px 6px 0;
+
+	${media("tablet")} {
+		width: 100%;
+	}
+
+`;
+
 const StyledBadgesRow = styled(BadgesRow)`
 	margin-bottom: 56px;
 
@@ -55,7 +66,8 @@ const StyledCardIllustration = styled(PokemonIllustration)`
 
 `;
 
-const CardDetails = ({types, src, name, pokemonId, weight, height}) => {
+const CardDetails = ({types, src, name, pokemonId, weight, height, stats}) => {
+	const statsList = getStats(stats);
 	return (
 		<Card>
 			<Row
@@ -94,6 +106,16 @@ const CardDetails = ({types, src, name, pokemonId, weight, height}) => {
 				$margin="0 0 16px 0"
 			>
 				<h2 className="name">{name}</h2>
+			</Row>
+
+			<Row
+				$margin="-16px -6px 0"
+			>
+				{statsList.map(item => (
+					<StatCol>
+						<Stat key={item.name} name={item.name} value={item.base_stat} />
+					</StatCol>
+				))}
 			</Row>
 
 		</Card>

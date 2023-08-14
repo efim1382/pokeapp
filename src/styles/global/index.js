@@ -12,6 +12,10 @@ const GlobalStyles = createGlobalStyle`
 		font-family: inherit;
 	}
 
+	a {
+		color: ${({theme}) => theme.link};
+	}
+
 	@font-face {
 		font-family: 'PT Sans';
 		src: local('PT Sans'), local('FontName'),
