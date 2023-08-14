@@ -13,7 +13,7 @@ import { media } from "styles/mixins/media";
 
 const maxCaptureRate = 255;
 
-const CardDetailsWrap = styled(Col)`
+const CardDetailsWrapper = styled(Col)`
 	width: 100%;
 	max-width: 342px;
 	min-width: 288px;
@@ -102,7 +102,7 @@ const Details = () => {
 
 	return (
 		<Row>
-			<CardDetailsWrap>
+			<CardDetailsWrapper>
 				<Row>
 					<CardDetails {...details} />
 
@@ -122,7 +122,7 @@ const Details = () => {
 						</Button>
 					</LinksRow>
 				</Row>
-			</CardDetailsWrap>
+			</CardDetailsWrapper>
 
 			<TableWrap>
 				<TableRow title="Versions">

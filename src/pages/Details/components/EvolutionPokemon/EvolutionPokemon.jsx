@@ -56,13 +56,13 @@ const EvolutionPokemon = ({ name }) => {
 
 	const {
 		data = {},
-		isLoading,
 		error,
+		isSuccess,
 	} = usePokemonData(name);
 
 	const pokemonImageUrl= data?.sprites?.other.dream_world.front_default;
 
-	if (isLoading || error) {
+	if (error) {
 		return null;
 	}
 
@@ -76,7 +76,9 @@ const EvolutionPokemon = ({ name }) => {
 				<BubbleIllustrationDark />
 			)}
 
-			<div className="name">{name}</div>
+			{isSuccess && (
+				<div className="name">{name}</div>
+			)}
 		</Container>
 	);
 };
