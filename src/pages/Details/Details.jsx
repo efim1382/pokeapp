@@ -131,7 +131,7 @@ const Details = () => {
 					>
 						{varieties.map((version) => (
 							<Col $padding="0 16px" key={version.pokemon.name}>
-								<NavLink to={`/pokemon/${version.pokemon.name}`}>
+								<NavLink to={`/pokemon/${version.pokemon.name}/`}>
 									{version.pokemon.name}
 								</NavLink>
 							</Col>
