@@ -100,11 +100,9 @@ const PokemonCard = ({ name }) => {
 				<BadgesRow>
 					{types.map((item) => (
 						<Badge
-							className={`type-${item.type.name}`}
+							name={item.type.name}
 							key={item.type.name}
-						>
-							{item.type.name}
-						</Badge>
+						/>
 					))}
 				</BadgesRow>
 

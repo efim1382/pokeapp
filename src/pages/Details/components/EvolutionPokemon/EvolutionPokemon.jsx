@@ -4,7 +4,7 @@ import { usePokemonData } from "hooks/pokemonQueries";
 import styled from "styled-components";
 import { ReactComponent as BubbleIllustrationLight } from './buble-light-theme.svg';
 import { ReactComponent as BubbleIllustrationDark } from './bubble-dark-theme.svg';
-import {ThemePreferenceContext} from "../../store/ThemeProvider";
+import {ThemePreferenceContext} from "store/ThemeProvider";
 
 const Container = styled.div`
 	position: relative;

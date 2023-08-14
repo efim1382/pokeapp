@@ -1,14 +1,14 @@
 import React from "react";
 import PropTypes from "prop-types";
-import PokemonIllustration from "components/PokemonIllustration";
-import Badge, { Row as BadgesRow } from "components/Badge";
-import styled from "styled-components";
-import { media } from "styles/mixins/media";
+import Badge from "components/Badge";
 import Height from "components/Icons/Height";
 import Weight from "components/Icons/Weight";
-import Stat from "components/Stat";
+import Stat from "./components/Stat";
+import PokemonIllustration from "components/PokemonIllustration";
 import { Col, Row } from "components/Layout";
-import { getStats } from "./CardDetails.config";
+import { getBeautifiedId } from "helpers/pokemonHelpers";
+import styled from "styled-components";
+import { media } from "styles/mixins/media";
 
 const Card = styled.div`
 	display: flex;
@@ -41,7 +41,6 @@ const Card = styled.div`
 			color: ${({theme}) => theme.card.stat};
 		}
 	}
-
 `;
 
 const StatCol = styled(Col)`
@@ -51,30 +50,40 @@ const StatCol = styled(Col)`
 	${media("mobile")} {
 		width: 100%;
 	}
-
 `;
 
-const CardDetails = ({types, src, name, pokemonId, weight, height, stats}) => {
-	const statsList = getStats(stats);
+const CardDetails = (props) => {
+	const {
+		id,
+		name,
+		height,
+		weight,
+		sprites = {},
+		types = [],
+		stats = [],
+	} = props;
+
+	const pokemonImageUrl = sprites?.other?.dream_world.front_default;
+	const pokemonId = getBeautifiedId(id);
+
 	return (
 		<Card>
 			<Row
 				$margin="0 -2px 56px"
 			>
-				{types.map(item => (
+				{types.map((item) => (
 					<Badge
-						className={`type-${item.type.name}`}
 						key={item.type.name}
-					>
-						{item.type.name}
-					</Badge>
+						name={item.type.name}
+					/>
 				))}
 			</Row>
 
 			<PokemonIllustration
-				$src={src}
+				$src={pokemonImageUrl}
 				$pokemonId={pokemonId}
 			/>
+
 			<Row
 				$justifyContent="space-between"
 				$margin="16px -4px"
@@ -84,11 +93,13 @@ const CardDetails = ({types, src, name, pokemonId, weight, height, stats}) => {
 					<Weight />
 					<span data-testid="pokemon-weight" className="value">{weight}</span>
 				</div>
+
 				<div className="stat-item">
 					<Height />
 					<span data-testid="pokemon-height" className="value">{height}</span>
 				</div>
 			</Row>
+
 			<Row
 				$justifyContent="center"
 				$margin="0 0 16px 0"
@@ -99,25 +110,43 @@ const CardDetails = ({types, src, name, pokemonId, weight, height, stats}) => {
 			<Row
 				$margin="-16px -6px 0"
 			>
-				{statsList.map(item => (
-					<StatCol>
-						<Stat key={item.name} name={item.name} value={item.base_stat} />
+				{stats.map((item) => (
+					<StatCol key={item.stat.name}>
+						<Stat name={item.stat.name} value={item.base_stat} />
 					</StatCol>
 				))}
 			</Row>
-
 		</Card>
 	);
-
 };
 
 CardDetails.propTypes = {
-	types: PropTypes.array,
-	src: PropTypes.string,
-	name: PropTypes.string,
-	pokemonId: PropTypes.string,
-	weight: PropTypes.string,
-	height: PropTypes.string,
+	id: PropTypes.number.isRequired,
+	name: PropTypes.string.isRequired,
+	weight: PropTypes.number.isRequired,
+	height: PropTypes.number.isRequired,
+
+	stats: PropTypes.arrayOf(PropTypes.shape({
+		base_stat: PropTypes.number,
+
+		stat: PropTypes.objectOf({
+			name: PropTypes.string,
+		}),
+	})).isRequired,
+
+	types: PropTypes.arrayOf(PropTypes.shape({
+		type: PropTypes.objectOf({
+			name: PropTypes.string,
+		}),
+	})).isRequired,
+
+	sprites: PropTypes.objectOf({
+		other: PropTypes.objectOf({
+			dream_world: PropTypes.objectOf({
+				front_default: PropTypes.string,
+			}),
+		}),
+	}),
 };
 
 export default CardDetails;

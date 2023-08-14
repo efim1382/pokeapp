@@ -1,16 +1,15 @@
 import React from "react";
 import { useParams, NavLink } from "react-router-dom";
 import NotFound from "pages/NotFound";
-import Evolution from "./Evolution";
-import { usePokemonDetails } from "hooks/pokemonQueries";
-import { getDescription } from "helpers/pokemonHelpers";
-import CardDetails from "components/CardDetails";
 import { Row, Col } from "components/Layout";
-import Button from "components/Button";
-import { Container as PaginationContainer } from "components/Button";
-import TableRow from "components/Table";
+import Button, { Container as PaginationContainer } from "components/Button";
+import CardDetails from "./CardDetails";
+import Evolution from "./Evolution";
+import TableRow from "./components/TableRow";
+import { usePokemonDetails } from "hooks/pokemonQueries";
+import { getDescription, getBeautifiedId } from "helpers/pokemonHelpers";
 import styled from "styled-components";
-import { media } from "../../styles/mixins/media";
+import { media } from "styles/mixins/media";
 
 const maxCaptureRate = 255;
 
@@ -82,12 +81,6 @@ const Details = () => {
 
 	const {
 		id,
-		name,
-		height,
-		weight,
-		sprites = {},
-		types = [],
-		stats = [],
 		abilities = [],
 	} = details;
 
@@ -100,39 +93,33 @@ const Details = () => {
 	} = species;
 
 	const previousPokemonId = id - 1;
-	const formattedPreviousPokemonId = String(previousPokemonId).padStart(4, 0);
+	const formattedPreviousPokemonId = getBeautifiedId(previousPokemonId);
 	const nextPokemonId = id + 1;
-	const formattedNextPokemonId = String(nextPokemonId).padStart(4, 0);
+	const formattedNextPokemonId = getBeautifiedId(nextPokemonId);
 	const isPreviousPokemonExist = previousPokemonId > 0;
 	const description = getDescription(flavor_text_entries);
 	const catchRate = ((capture_rate * 100) / maxCaptureRate).toFixed(1);
-	const pokemonId = String(id).padStart(4, 0);
 
 	return (
 		<Row>
 			<CardDetailsWrap>
 				<Row>
-					<CardDetails
-						types={types}
-						src={sprites.other.dream_world.front_default}
-						name={name}
-						pokemonId={pokemonId}
-						weight={weight}
-						height={height}
-						stats={stats}
-					/>
+					<CardDetails {...details} />
 
 					<LinksRow>
 						{isPreviousPokemonExist && (
 							<Button withLeftArrow>
-								<Link to={`/pokemon/${previousPokemonId}/`}>Back #{formattedPreviousPokemonId}</Link>
+								<Link to={`/pokemon/${previousPokemonId}/`}>
+									Back #{formattedPreviousPokemonId}
+								</Link>
 							</Button>
 						)}
 
 						<Button withRightArrow>
-							<Link to={`/pokemon/${nextPokemonId}/`}>Next #{formattedNextPokemonId}</Link>
+							<Link to={`/pokemon/${nextPokemonId}/`}>
+								Next #{formattedNextPokemonId}
+							</Link>
 						</Button>
-
 					</LinksRow>
 				</Row>
 			</CardDetailsWrap>

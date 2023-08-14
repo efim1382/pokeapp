@@ -1,8 +1,8 @@
 import React from "react";
 import PropTypes from "prop-types";
 import styled from "styled-components";
-import Row from "components/Layout/Row";
-import Col from "components/Layout/Col";
+import { Row, Col } from "components/Layout";
+import { STAT_NAMES } from "./Stat.config";
 
 const max = 255;
 
@@ -36,6 +36,7 @@ const Value = styled.span`
 
 const Stat = ({ name, value }) => {
 	const percent = (value * 100) / max;
+	const label = STAT_NAMES[name];
 
 	return (
 		<Row>
@@ -43,7 +44,7 @@ const Stat = ({ name, value }) => {
 				$width="100%"
 				$justifyContent="space-between"
 			>
-				<Name>{name}</Name>
+				<Name>{label}</Name>
 				<Value>{value}</Value>
 			</Row>
 
