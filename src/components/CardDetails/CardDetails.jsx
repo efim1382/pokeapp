@@ -54,18 +54,6 @@ const StatCol = styled(Col)`
 
 `;
 
-const StyledBadgesRow = styled(BadgesRow)`
-	margin-bottom: 56px;
-
-	${media("mobile")} {
-		margin-bottom: 24px;
-	}
-`;
-
-const StyledCardIllustration = styled(PokemonIllustration)`
-
-`;
-
 const CardDetails = ({types, src, name, pokemonId, weight, height, stats}) => {
 	const statsList = getStats(stats);
 	return (
