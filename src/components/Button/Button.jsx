@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import styled from "styled-components";
-import { ReactComponent as Arrow } from './arrow.svg';
+import { ReactComponent as Arrow } from './svg/arrow.svg';
 
 const StyledButton = styled.button`
 	display: flex;

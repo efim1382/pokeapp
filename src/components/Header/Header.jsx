@@ -3,7 +3,7 @@ import { NavLink } from "react-router-dom";
 import styled from "styled-components";
 import FormSearch from "./FormSearch";
 import ThemeSwitcher from "./ThemeSwitcher";
-import { ReactComponent as Logo } from './logo.svg';
+import { ReactComponent as Logo } from './svg/logo.svg';
 import { media } from "styles/mixins/media";
 
 const HeaderContainer = styled.div`

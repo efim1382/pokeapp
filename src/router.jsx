@@ -1,6 +1,7 @@
 import React, { Suspense, lazy } from "react";
 import { Route, Routes } from "react-router-dom";
 import Layout from "components/Layout";
+import HomeLoading from "pages/Home/components/Loading";
 
 const NotFoundPage = lazy(() => import("pages/NotFound"));
 const HomePage = lazy(() => import("pages/Home"));
@@ -23,7 +24,7 @@ const Router = () => (
 				index
 
 				element={
-					<Suspense fallback="Loading...">
+					<Suspense fallback={<HomeLoading />}>
 						<HomePage />
 					</Suspense>
 				}

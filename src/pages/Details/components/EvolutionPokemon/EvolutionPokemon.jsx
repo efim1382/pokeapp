@@ -1,10 +1,10 @@
-import React, {useContext} from "react";
+import React, { useContext } from "react";
 import PropTypes from "prop-types";
-import { usePokemonData } from "hooks/pokemonQueries";
 import styled from "styled-components";
-import { ReactComponent as BubbleIllustrationLight } from './buble-light-theme.svg';
-import { ReactComponent as BubbleIllustrationDark } from './bubble-dark-theme.svg';
-import {ThemePreferenceContext} from "store/ThemeProvider";
+import { usePokemonData } from "hooks/pokemonQueries";
+import { ThemePreferenceContext } from "store/ThemeProvider";
+import { ReactComponent as BubbleIllustrationLight } from './svg/buble-light-theme.svg';
+import { ReactComponent as BubbleIllustrationDark } from './svg/bubble-dark-theme.svg';
 
 const Container = styled.div`
 	position: relative;
@@ -53,13 +53,14 @@ const Container = styled.div`
 const EvolutionPokemon = ({ name }) => {
 	const { currentTheme } = useContext(ThemePreferenceContext);
 	const isLightTheme = currentTheme === "light";
+
 	const {
 		data = {},
 		isLoading,
 		error,
 	} = usePokemonData(name);
 
-	const pokemonImageUrl = data?.sprites?.other.dream_world.front_default;
+	const pokemonImageUrl= data?.sprites?.other.dream_world.front_default;
 
 	if (isLoading || error) {
 		return null;
@@ -74,6 +75,7 @@ const EvolutionPokemon = ({ name }) => {
 			) : (
 				<BubbleIllustrationDark />
 			)}
+
 			<div className="name">{name}</div>
 		</Container>
 	);

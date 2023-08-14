@@ -125,28 +125,26 @@ const Details = () => {
 			</CardDetailsWrap>
 
 			<TableWrap>
-				<TableRow
-					title="Versions"
-				>
-					<Row  $margin="0 -16px">
+				<TableRow title="Versions">
+					<Row
+						$margin="0 -16px"
+					>
 						{varieties.map((version) => (
 							<Col $padding="0 16px" key={version.pokemon.name}>
-								<NavLink to={`/pokemon/${version.pokemon.name}`}>{version.pokemon.name}</NavLink>
+								<NavLink to={`/pokemon/${version.pokemon.name}`}>
+									{version.pokemon.name}
+								</NavLink>
 							</Col>
 						))}
 					</Row>
-
 				</TableRow>
-				<TableRow
-					title="Story"
-				>
+
+				<TableRow title="Story">
 					{description}
 				</TableRow>
 
-				<TableRow
-					title="Abilities"
-				>
-					<Row $margin="0 -4px" >
+				<TableRow title="Abilities">
+					<Row $margin="0 -4px">
 						{abilities.map((item) => (
 							<Col
 								$padding="0 4px"
@@ -159,33 +157,27 @@ const Details = () => {
 					</Row>
 				</TableRow>
 
-				<TableRow
-					title="Catch rate"
-				>
+				<TableRow title="Catch rate">
 					{catchRate}%
 				</TableRow>
 
-				<TableRow
-					title="Egg group"
-				>
-
-					<Row $margin="0 -4px" >
+				<TableRow title="Egg group">
+					<Row $margin="0 -4px">
 						{egg_groups.map((item) => (
-							<Col $padding="0 4px" key={item.name}>{item.name}</Col>
+							<Col $padding="0 4px" key={item.name}>
+								{item.name}
+							</Col>
 						))}
 					</Row>
 				</TableRow>
 
-				<TableRow
-					title="Evolution"
-				>
+				<TableRow title="Evolution">
 					<Col $margin="-24px -20px 0">
 						{evolution_chain.url && (
 							<Evolution url={evolution_chain.url} />
 						)}
 					</Col>
 				</TableRow>
-
 			</TableWrap>
 		</Row>
 	);
