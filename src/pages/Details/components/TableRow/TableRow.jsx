@@ -1,7 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
-import Row from "components/Layout/Row";
-import Col from "components/Layout/Col";
+import { Row, Col } from "components/Layout";
 import styled from "styled-components";
 import { media } from "styles/mixins/media";
 
@@ -37,19 +36,16 @@ const Value = styled(Col)`
 	max-width: 100%;
 `;
 
-
-const TableRow = ({title, children}) => {
-
-	return(
+const TableRow = ({ title, children }) => {
+	return (
 		<TRow>
 			<Title>{title}</Title>
 			<Value>{children}</Value>
 		</TRow>
 	);
-
 };
 
-TableRow.prototype = {
+TableRow.propTypes = {
 	title: PropTypes.string,
 	children: PropTypes.any,
 };

@@ -1,6 +1,8 @@
+import React from "react";
 import styled from "styled-components";
+import PropTypes from "prop-types";
 
-const Badge = styled.div`
+const BadgeWrapper = styled.div`
 	display: flex;
 	padding: 0 8px;
 	margin: 0 2px;
@@ -89,5 +91,15 @@ const Badge = styled.div`
 		background-color: #6AA596;
 	}
 `;
+
+const Badge = ({ name }) => (
+	<BadgeWrapper className={`type-${name}`}>
+		{name}
+	</BadgeWrapper>
+);
+
+Badge.propTypes = {
+	name: PropTypes.string.isRequired,
+};
 
 export default Badge;

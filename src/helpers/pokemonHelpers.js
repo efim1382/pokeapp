@@ -7,3 +7,5 @@ export const getDescription = (arrayDescriptions = []) => {
 	const { flavor_text } = arrayDescriptions.find((item) => item.language.name === "en");
 	return flavor_text;
 };
+
+export const getBeautifiedId = (id) => String(id).padStart(4, "0");

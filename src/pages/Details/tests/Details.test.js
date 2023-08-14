@@ -1,12 +1,12 @@
 import React from "react";
-import {render, screen, waitFor} from "@testing-library/react";
 import { MemoryRouter, Route, Routes } from "react-router-dom";
 import { QueryClient, QueryClientProvider } from "react-query";
 import Details from "pages/Details/index";
+import ThemeProvider from "store/ThemeProvider";
+import { render, screen, waitFor } from "@testing-library/react";
 import "@testing-library/jest-dom/extend-expect";
 import mockMatchMedia from "__mocks__/matchMedia";
 import { pokemonMock, speciesMock } from "api/mocks";
-import ThemeProvider from "store/ThemeProvider";
 
 const queryClient = new QueryClient();
 
