@@ -1,7 +1,7 @@
 import React, { Fragment } from "react";
 import PropTypes from "prop-types";
 import { Col, Row } from "components/Layout";
-import EvolutionPokemon from "./components/EvolutionPokemon";
+import EvolutionPokemon from "pages/Details/components/EvolutionPokemon";
 import { useCustomRequest } from "hooks/pokemonQueries";
 
 const generateEvolutionRows = (chain) => {
@@ -35,9 +35,7 @@ const Evolution = ({ url }) => {
 	const { chain = {} } = data;
 
 	if (isLoading) {
-		return (
-			<div>Loading chain...</div>
-		);
+		return null;
 	}
 
 	if (error) {
@@ -60,8 +58,8 @@ const Evolution = ({ url }) => {
 						$overflow="auto"
 					>
 						{chain.map((pokemon) => (
-							<Col key={key} $padding="24px 20px 0">
-								<EvolutionPokemon key={pokemon} name={pokemon} />
+							<Col key={pokemon} $padding="24px 20px 0">
+								<EvolutionPokemon name={pokemon} />
 							</Col>
 						))}
 					</Row>

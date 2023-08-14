@@ -3,9 +3,9 @@ import PropTypes from "prop-types";
 import Badge from "components/Badge";
 import Height from "components/Icons/Height";
 import Weight from "components/Icons/Weight";
-import Stat from "./components/Stat";
 import PokemonIllustration from "components/PokemonIllustration";
 import { Col, Row } from "components/Layout";
+import Stat from "pages/Details/components/Stat";
 import { getBeautifiedId } from "helpers/pokemonHelpers";
 import styled from "styled-components";
 import { media } from "styles/mixins/media";
@@ -129,20 +129,20 @@ CardDetails.propTypes = {
 	stats: PropTypes.arrayOf(PropTypes.shape({
 		base_stat: PropTypes.number,
 
-		stat: PropTypes.objectOf({
+		stat: PropTypes.shape({
 			name: PropTypes.string,
 		}),
 	})).isRequired,
 
 	types: PropTypes.arrayOf(PropTypes.shape({
-		type: PropTypes.objectOf({
+		type: PropTypes.shape({
 			name: PropTypes.string,
 		}),
 	})).isRequired,
 
-	sprites: PropTypes.objectOf({
-		other: PropTypes.objectOf({
-			dream_world: PropTypes.objectOf({
+	sprites: PropTypes.shape({
+		other: PropTypes.shape({
+			dream_world: PropTypes.shape({
 				front_default: PropTypes.string,
 			}),
 		}),

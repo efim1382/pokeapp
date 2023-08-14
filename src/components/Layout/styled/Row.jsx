@@ -1,6 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { Col } from "components/Layout";
+import { Col } from "components/Layout/index";
 
 const Row = (props) => {
 	const { children } = props;
