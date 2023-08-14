@@ -11,7 +11,6 @@ import { Container as PaginationContainer } from "components/Button";
 import TableRow from "components/Table";
 import styled from "styled-components";
 import { media } from "../../styles/mixins/media";
-import Bubble from "../../components/Bubble";
 
 const maxCaptureRate = 255;
 
@@ -174,10 +173,7 @@ const Details = () => {
 				>
 					<Row $margin="-24px -20px 0">
 						{evolution_chain.url && (
-							<Col $maxWidth="190px" $padding="24px 20px 0">
-								<Evolution url={evolution_chain.url} />
-							</Col>
-
+							<Evolution url={evolution_chain.url} />
 						)}
 					</Row>
 				</TableRow>
