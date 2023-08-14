@@ -3,9 +3,9 @@ import PropTypes from "prop-types";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import { media } from "styles/mixins/media";
+import { useMedia } from "hooks/useMedia";
 import { ReactComponent as SearchLogo } from './search-button.svg';
 import { ReactComponent as SearchLogoMobile } from './search-button-mobile.svg';
-import { useMedia } from "hooks/useMedia";
 
 const Form = styled.form`
 	width: 100%;
@@ -89,7 +89,10 @@ const SearchForm = () => {
 			/>
 
 			<Button type="submit">
-				{isMobile ? <SearchLogoMobile/> : <SearchLogo/>}
+				{isMobile
+					? <SearchLogoMobile />
+					: <SearchLogo />
+				}
 			</Button>
 		</Form>
 	);

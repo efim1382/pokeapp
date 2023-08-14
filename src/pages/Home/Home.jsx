@@ -1,10 +1,13 @@
-import React, { Suspense, lazy } from "react";
+import React, { Fragment, Suspense, lazy } from "react";
 import { useSearchParams } from "react-router-dom";
-import Button from "components/Button";
+import Button, { Container as PaginationContainer } from "components/Button";
+
+import {
+	Container as CardsContainer,
+	Wrapper as CardWrapper,
+} from "components/PokemonCard";
+
 import { usePokemonList } from "hooks/pokemonQueries";
-import CardsContainer from "components/PokemonCard/CardsContainer";
-import CardWrap from "components/PokemonCard/CardWrap";
-import PaginationContainer from "components/Button/PaginationContainer";
 
 const PokemonCard = lazy(() => import("components/PokemonCard"));
 
@@ -49,22 +52,21 @@ const Home = () => {
 	}
 
 	return (
-		<>
+		<Fragment>
 			<CardsContainer>
 				{results.map((pokemon) => (
 					<Suspense key={pokemon.name} fallback="Loading...">
-						<CardWrap>
+						<CardWrapper>
 							<PokemonCard name={pokemon.name} />
-						</CardWrap>
+						</CardWrapper>
 					</Suspense>
 				))}
 			</CardsContainer>
 
-
 			<PaginationContainer>
 				{previous && (
 					<Button
-						left
+						withLeftArrow
 						onClick={handlePreviousPageClick}
 					>
 						Prev
@@ -73,15 +75,14 @@ const Home = () => {
 
 				{next && (
 					<Button
-						right
+						withRightArrow
 						onClick={handleNextPageClick}
 					>
 						Next
 					</Button>
 				)}
 			</PaginationContainer>
-
-		</>
+		</Fragment>
 	);
 };
 

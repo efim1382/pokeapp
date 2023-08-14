@@ -16,4 +16,4 @@ export const useMedia = (query) => {
 	}, [query]);
 
 	return matches;
-}
+};

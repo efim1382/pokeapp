@@ -29,13 +29,16 @@ export const usePokemonDetails = (id) => {
 		() => fetchPokemon(id),
 	);
 
+	const specieName = pokemonData?.species?.name;
+
 	const {
 		data: species = {},
 		isLoading: isSpeciesLoading,
 		error: speciesError,
 	} = useQuery(
-		["pokemon-species", id],
-		() => fetchPokemonSpecies(id),
+		["pokemon-species", specieName],
+		() => fetchPokemonSpecies(specieName),
+		{ enabled: !!specieName }
 	);
 
 	const isLoading = isPokemonLoading || isSpeciesLoading;

@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import { media } from "styles/mixins/media";
 
-const CardWrap = styled.div`
+const CardWrapper = styled.div`
 	width: 100%;
 	max-width: 25%;
 	min-width: 288px;
@@ -22,4 +22,4 @@ const CardWrap = styled.div`
 	}
 `;
 
-export default CardWrap;
+export default CardWrapper;

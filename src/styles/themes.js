@@ -5,7 +5,9 @@ export const keys = {
 	dark: "dark",
 };
 
-export const defaultTheme = keys.light;
+export const defaultTheme = window.matchMedia("(prefers-color-scheme: dark)").matches
+	? keys.dark
+	: keys.light;
 
 export const light = {
 	header: colors.RED,

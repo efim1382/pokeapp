@@ -1,15 +1,15 @@
 import styled from "styled-components";
 
-const CardIll = styled.div`
+const PokemonIllustration = styled.div`
 	width: 182px;
 	height: 182px;
 	position: relative;
-	background-image: url(${({src}) => src});
+	background-image: url(${({$src}) => $src});
 	background-repeat: no-repeat;
 	background-size: contain;
 
 	&:before {
-		content: ${({pokemonId}) => `"#${pokemonId}"`};
+		content: ${({$pokemonId}) => `"#${$pokemonId}"`};
 		color: ${({theme}) => theme.card.title};
 		font-size: 96px;
 		width: 100%;
@@ -37,6 +37,4 @@ const CardIll = styled.div`
 	}
 `;
 
-const CardIllustration = (props) => <CardIll {...props} />;
-
-export default CardIllustration;
+export default PokemonIllustration;

@@ -1,11 +1,10 @@
 import React from "react";
 import PropTypes from "prop-types";
-import CardIllustration from "components/CardIllustration";
-import BadgesRow from "components/Badge/BadgesRow";
-import Badge from "components/Badge";
+import PokemonIllustration from "components/PokemonIllustration";
+import Badge, { Row as BadgesRow } from "components/Badge";
 import styled from "styled-components";
 import { media } from "styles/mixins/media";
-import Row from "components/Layout/Row";
+import { Row } from "components/Layout";
 import Height from "components/Icons/Height";
 import Weight from "components/Icons/Weight";
 
@@ -52,7 +51,7 @@ const StyledBadgesRow = styled(BadgesRow)`
 	}
 `;
 
-const StyledCardIllustration = styled(CardIllustration)`
+const StyledCardIllustration = styled(PokemonIllustration)`
 
 `;
 
@@ -60,7 +59,7 @@ const CardDetails = ({types, src, name, pokemonId, weight, height}) => {
 	return (
 		<Card>
 			<Row
-				margin="0 -2px 56px"
+				$margin="0 -2px 56px"
 			>
 				{types.map(item => (
 					<Badge
@@ -72,14 +71,14 @@ const CardDetails = ({types, src, name, pokemonId, weight, height}) => {
 				))}
 			</Row>
 
-			<CardIllustration
-				src={src}
-				pokemonId={pokemonId}
+			<PokemonIllustration
+				$src={src}
+				$pokemonId={pokemonId}
 			/>
 			<Row
-				justifyContent="space-between"
-				margin="16px -4px"
-				width="100%"
+				$justifyContent="space-between"
+				$margin="16px -4px"
+				$width="100%"
 			>
 				<div className="stat-item">
 					<Weight />
@@ -91,8 +90,8 @@ const CardDetails = ({types, src, name, pokemonId, weight, height}) => {
 				</div>
 			</Row>
 			<Row
-				justifyContent="center"
-				margin="0 0 16px 0"
+				$justifyContent="center"
+				$margin="0 0 16px 0"
 			>
 				<h2 className="name">{name}</h2>
 			</Row>

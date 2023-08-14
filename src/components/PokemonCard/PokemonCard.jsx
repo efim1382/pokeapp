@@ -3,15 +3,14 @@ import PropTypes from "prop-types";
 import { NavLink } from "react-router-dom";
 import Height from "components/Icons/Height";
 import Weight from "components/Icons/Weight";
+import PokemonIllustration from "components/PokemonIllustration";
+import LoadingCard from "./styled/LoadingCard";
+import Badge, { Row as BadgesRow } from "components/Badge";
+import { Row } from "components/Layout";
 import { usePokemonDetails } from "hooks/pokemonQueries";
-import { getDescription } from "helpers/pokemonHelpers";
-import LoadingCard from "./LoadingCard";
-import styled from "styled-components";
 import { useMedia } from "hooks/useMedia";
-import BadgesRow from "components/Badge/BadgesRow";
-import Badge from "components/Badge";
-import CardIllustration from "components/CardIllustration";
-import Row from "components/Layout/Row";
+import { getDescription } from "helpers/pokemonHelpers";
+import styled from "styled-components";
 
 const Card = styled.div`
 	display: flex;
@@ -44,7 +43,6 @@ const Card = styled.div`
 		color: ${({theme}) => theme.card.desc};
 		text-align: center;
 	}
-
 `;
 
 const TopBar = styled.div`
@@ -74,7 +72,7 @@ const PokemonCard = ({ name }) => {
 
 	if (isLoading) {
 		return (
-			<LoadingCard/>
+			<LoadingCard />
 		);
 	}
 
@@ -91,35 +89,47 @@ const PokemonCard = ({ name }) => {
 		types = [],
 	} = details;
 
+	const pokemonImageUrl = sprites.other.dream_world.front_default;
 	const { flavor_text_entries } = species;
 	const description = getDescription(flavor_text_entries);
-	const pokemonId = String(id).padStart(4, 0);
+	const pokemonId = String(id).padStart(4, "0");
 
 	return (
 		<Card data-testid="pokemon-card">
 			<TopBar>
 				<BadgesRow>
 					{types.map((item) => (
-						<Badge className={`type-${item.type.name}`} key={item.type.name}>{item.type.name}</Badge>
+						<Badge
+							className={`type-${item.type.name}`}
+							key={item.type.name}
+						>
+							{item.type.name}
+						</Badge>
 					))}
 				</BadgesRow>
 
 				{!isMobile && (
 					<Row
-						width="auto"
-						margin="0 -8px"
+						$width="auto"
+						$margin="0 -8px"
 					>
-						<span className="stat-item"><Height /><span className="value">{height}</span></span>
-						<span className="stat-item"><Weight /> <span className="value" data-testid="pokemon-card-weight">{weight}</span></span>
+						<span className="stat-item">
+							<Height />
+							<span className="value">{height}</span>
+						</span>
+
+						<span className="stat-item">
+							<Weight />
+							<span className="value" data-testid="pokemon-card-weight">{weight}</span>
+						</span>
 					</Row>
 				)}
-
 			</TopBar>
 
 			<NavLink to={`/pokemon/${name}/`}>
-				<CardIllustration
-					src={sprites.other.dream_world.front_default}
-					pokemonId={pokemonId}
+				<PokemonIllustration
+					$src={pokemonImageUrl}
+					$pokemonId={pokemonId}
 				/>
 			</NavLink>
 

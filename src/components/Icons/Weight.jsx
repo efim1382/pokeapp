@@ -1,12 +1,12 @@
 import React from "react";
-import IconWrap from "./IconWrap";
+import IconWrapper from "./styled/IconWrapper";
 import { useTheme } from "styled-components";
 
 const Weight = () => {
 	const theme = useTheme();
 
 	return (
-		<IconWrap>
+		<IconWrapper>
 			<svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
 				<g id="weight">
 					<path
@@ -18,7 +18,7 @@ const Weight = () => {
 					/>
 				</g>
 			</svg>
-		</IconWrap>
+		</IconWrapper>
 	);
 };
 

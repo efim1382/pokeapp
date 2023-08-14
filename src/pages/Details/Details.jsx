@@ -6,8 +6,7 @@ import Stat from "./Stat";
 import { usePokemonDetails } from "hooks/pokemonQueries";
 import { getDescription } from "helpers/pokemonHelpers";
 import CardDetails from "components/CardDetails";
-import Row from "components/Layout/Row";
-import Col from "components/Layout/Col";
+import { Row, Col } from "components/Layout";
 import Button from "components/Button";
 
 const maxCaptureRate = 255;
@@ -68,9 +67,9 @@ const Details = () => {
 	return (
 		<Row>
 			<Col
-				width="100%"
-				maxWidth="342px"
-				margin="0 16px 0 0"
+				$width="100%"
+				$maxWidth="342px"
+				$margin="0 16px 0 0"
 			>
 				<CardDetails
 					types={types}
@@ -82,18 +81,18 @@ const Details = () => {
 				/>
 
 				<Row>
-					<Button left>
+					<Button withLeftArrow>
 
 					</Button>
-					<Button right>
+					<Button withRightArrow>
 
 					</Button>
 				</Row>
 			</Col>
 
 			<Col
-				flex="1 1 .01%"
-				width="auto"
+				$flex="1 1 .01%"
+				$width="auto"
 			>
 				{stats.map((item) => (
 					<Stat key={item.stat.name} name={item.stat.name} value={item.base_stat} />

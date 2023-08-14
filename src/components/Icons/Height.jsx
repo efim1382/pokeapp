@@ -1,12 +1,12 @@
 import React from "react";
-import IconWrap from "./IconWrap";
+import IconWrapper from "./styled/IconWrapper";
 import { useTheme } from "styled-components";
 
 const Height = () => {
 	const theme = useTheme();
 
 	return (
-		<IconWrap>
+		<IconWrapper>
 			<svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 48 48" fill="none">
 				<path
 					fillRule="evenodd"
@@ -15,7 +15,7 @@ const Height = () => {
 					fill={theme.card.statIcon}
 				/>
 			</svg>
-		</IconWrap>
+		</IconWrapper>
 	);
 };
 

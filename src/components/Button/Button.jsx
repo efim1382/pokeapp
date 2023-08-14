@@ -33,16 +33,20 @@ const StyledButton = styled.button`
 	}
 `;
 
-const Button = ({ children, onClick, left, right }) => {
+const Button = (props) => {
+	const { children, onClick, withLeftArrow, withRightArrow } = props;
+
 	return (
 		<StyledButton onClick={onClick}>
-			{left && (
+			{withLeftArrow && (
 				<div className="arrow-left">
 					<Arrow />
 				</div>
 			)}
+
 			{children}
-			{right && (
+
+			{withRightArrow && (
 				<div className="arrow-right">
 					<Arrow />
 				</div>
@@ -53,15 +57,15 @@ const Button = ({ children, onClick, left, right }) => {
 
 Button.defaultProps = {
 	onClick: Function(),
-	left: false,
-	right: false,
+	withLeftArrow: false,
+	withRightArrow: false,
 };
 
 Button.propTypes = {
 	onClick: PropTypes.func,
 	children: PropTypes.any.isRequired,
-	left: PropTypes.bool,
-	right: PropTypes.bool,
+	withLeftArrow: PropTypes.bool,
+	withRightArrow: PropTypes.bool,
 };
 
 export default Button;
