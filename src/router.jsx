@@ -2,10 +2,19 @@ import React, { Suspense, lazy } from "react";
 import { Route, Routes } from "react-router-dom";
 import Layout from "components/Layout";
 import HomeLoading from "pages/Home/components/Loading";
+import Loader, { LoaderContainer } from "components/Loader";
 
 const NotFoundPage = lazy(() => import("pages/NotFound"));
 const HomePage = lazy(() => import("pages/Home"));
 const DetailsPage = lazy(() => import("pages/Details"));
+
+const Loading = () => {
+	return (
+		<LoaderContainer>
+			<Loader />
+		</LoaderContainer>
+	)
+};
 
 const Router = () => (
 	<Routes>
@@ -14,7 +23,7 @@ const Router = () => (
 				path="*"
 
 				element={
-					<Suspense fallback="Loading...">
+					<Suspense fallback={Loading}>
 						<NotFoundPage />
 					</Suspense>
 				}
@@ -34,7 +43,7 @@ const Router = () => (
 				path="/pokemon/:pokemonName/"
 
 				element={
-					<Suspense fallback="Loading...">
+					<Suspense fallback={Loading}>
 						<DetailsPage />
 					</Suspense>
 				}

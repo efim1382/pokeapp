@@ -10,8 +10,7 @@ import { usePokemonDetails } from "hooks/pokemonQueries";
 import { getDescription, getBeautifiedId } from "helpers/pokemonHelpers";
 import styled from "styled-components";
 import { media } from "styles/mixins/media";
-import { media } from "styles/mixins/media";
-import Loader from "components/Loader";
+import Loader, { LoaderContainer } from "components/Loader";
 
 const maxCaptureRate = 255;
 
@@ -47,9 +46,14 @@ const LinksRow = styled(PaginationContainer)`
 		padding-bottom: 16px;
 	}
 
-	button {
+	a {
 		flex: 1 1 auto;
 		margin:  0 8px;
+
+		button {
+			margin: 0;
+			width: 100%;
+		}
 	}
 `;
 
@@ -68,14 +72,9 @@ const Details = () => {
 
 	if (isLoading) {
 		return (
-			<Row
-				$minWidth="100%"
-				$minHeight="80vh"
-				$justifyContent="center"
-				$alignItems="center"
-			>
+			<LoaderContainer>
 				<Loader />
-			</Row>
+			</LoaderContainer>
 		);
 	}
 
@@ -122,18 +121,18 @@ const Details = () => {
 
 					<LinksRow>
 						{isPreviousPokemonExist && (
-							<Button withLeftArrow>
-								<Link to={`/pokemon/${previousPokemonId}/`}>
+							<Link to={`/pokemon/${previousPokemonId}/`}>
+								<Button withLeftArrow>
 									Back #{formattedPreviousPokemonId}
-								</Link>
-							</Button>
+								</Button>
+							</Link>
 						)}
 
-						<Button withRightArrow>
-							<Link to={`/pokemon/${nextPokemonId}/`}>
+						<Link to={`/pokemon/${nextPokemonId}/`}>
+							<Button withRightArrow>
 								Next #{formattedNextPokemonId}
-							</Link>
-						</Button>
+							</Button>
+						</Link>
 					</LinksRow>
 				</Row>
 			</CardDetailsWrapper>

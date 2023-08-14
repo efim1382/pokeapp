@@ -45,6 +45,10 @@ export const light = {
 		progressBar: colors.RED,
 	},
 	evoText: colors.GREEN,
+	notFound: {
+		text: colors.GREEN,
+		textSecondary: "#375A62"
+	},
 };
 
 export const dark = {
@@ -83,6 +87,10 @@ export const dark = {
 		progressBar: colors.BLUE
 	},
 	evoText: colors.BLUE,
+	notFound: {
+		text: colors.BLUE,
+		textSecondary: colors.GRAY,
+	},
 };
 
 export const themesMap = {

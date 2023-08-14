@@ -1,10 +1,12 @@
-import React from "react";
+import React, { useState } from "react";
 import { NavLink } from "react-router-dom";
 import styled from "styled-components";
 import FormSearch from "./FormSearch";
+import FormSearchMobile from "./FormSearchMobile";
 import ThemeSwitcher from "./ThemeSwitcher";
 import { ReactComponent as Logo } from './svg/logo.svg';
 import { media } from "styles/mixins/media";
+import { useMedia } from "hooks/useMedia";
 
 const HeaderContainer = styled.div`
 	background-color: ${( {theme} ) => theme.header};
@@ -19,21 +21,44 @@ const HeaderContainer = styled.div`
 	}
 `;
 
+const Link = styled(NavLink)`
+	${media("mobile")} {
+		width: 100%;
+	}
+`;
+
 const StyledLogo = styled(Logo)`
 	width: 100%;
 	max-width: 150px;
 	min-width: 87px;
-
 `;
 
 const Header = () => {
+	const [isShowSearch, setIsShowSearch] = useState(false);
+
+	const isMobile = useMedia("(max-width: 480px)");
+
+	const showMobileSearch = () => setIsShowSearch(true);
+	const hideMobileSearch = () => setIsShowSearch(false);
+
 	return (
 		<HeaderContainer>
-			<NavLink to="/">
-				<StyledLogo />
-			</NavLink>
+			{!isShowSearch && (
+				<Link to="/">
+					<StyledLogo />
+				</Link>
+			)}
 
-			<FormSearch />
+			{!isMobile && (
+				<FormSearch />
+			)}
+			{isMobile && (
+				<FormSearchMobile
+					isShowSearch={isShowSearch}
+					showSearch={showMobileSearch}
+					hideSearch={hideMobileSearch}
+				/>
+			)}
 			<ThemeSwitcher />
 		</HeaderContainer>
 	);
