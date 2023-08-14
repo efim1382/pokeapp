@@ -1,6 +1,5 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { NavLink } from "react-router-dom";
 import Height from "components/Icons/Height";
 import Weight from "components/Icons/Weight";
 import PokemonIllustration from "components/PokemonIllustration";
@@ -124,13 +123,11 @@ const PokemonCard = ({ name }) => {
 				)}
 			</TopBar>
 
-			<NavLink to={`/pokemon/${name}/`}>
-				<PokemonIllustration
-					$src={pokemonImageUrl}
-					$pokemonId={pokemonId}
-					data-testid="illustration"
-				/>
-			</NavLink>
+			<PokemonIllustration
+				$src={pokemonImageUrl}
+				$pokemonId={pokemonId}
+				data-testid="illustration"
+			/>
 
 			<h2 className="name" data-testid="pokemon-name">{name}</h2>
 			<span className="desc">{description}</span>

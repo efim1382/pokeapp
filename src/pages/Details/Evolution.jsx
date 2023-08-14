@@ -1,5 +1,6 @@
 import React, { Fragment } from "react";
 import PropTypes from "prop-types";
+import { NavLink } from "react-router-dom";
 import { Col, Row } from "components/Layout";
 import EvolutionPokemon from "pages/Details/components/EvolutionPokemon";
 import { useCustomRequest } from "hooks/pokemonQueries";
@@ -59,7 +60,9 @@ const Evolution = ({ url }) => {
 					>
 						{chain.map((pokemon) => (
 							<Col key={pokemon} $padding="24px 20px 0">
-								<EvolutionPokemon name={pokemon} />
+								<NavLink to={`/pokemon/${pokemon}/`}>
+									<EvolutionPokemon name={pokemon} />
+								</NavLink>
 							</Col>
 						))}
 					</Row>

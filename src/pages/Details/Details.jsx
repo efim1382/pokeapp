@@ -32,6 +32,7 @@ const TableWrap = styled(Col)`
 	width: auto;
 	overflow: hidden;
 	border-radius: 16px;
+	box-shadow: 0 8px 8px 0 rgba(0, 0, 0, 0.06);
 `;
 
 const LinksRow = styled(PaginationContainer)`
@@ -142,7 +143,7 @@ const Details = () => {
 					>
 						{varieties.map((version) => (
 							<Col $padding="0 16px" key={version.pokemon.name}>
-								<NavLink to={`/pokemon/${version.pokemon.name}`}>
+								<NavLink to={`/pokemon/${version.pokemon.name}/`}>
 									{version.pokemon.name}
 								</NavLink>
 							</Col>
