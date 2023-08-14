@@ -98,14 +98,14 @@ const CardDetails = ({types, src, name, pokemonId, weight, height, stats}) => {
 				</div>
 				<div className="stat-item">
 					<Height />
-					<span className="value">{height}</span>
+					<span data-testid="pokemon-height" className="value">{height}</span>
 				</div>
 			</Row>
 			<Row
 				$justifyContent="center"
 				$margin="0 0 16px 0"
 			>
-				<h2 className="name">{name}</h2>
+				<h2 className="name" data-testid="pokemon-name">{name}</h2>
 			</Row>
 
 			<Row
