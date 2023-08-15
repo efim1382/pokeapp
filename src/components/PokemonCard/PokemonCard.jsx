@@ -10,6 +10,7 @@ import { usePokemonDetails } from "hooks/pokemonQueries";
 import { useMedia } from "hooks/useMedia";
 import { getDescription } from "helpers/pokemonHelpers";
 import styled from "styled-components";
+import DefaultPokemonIllustration from "pages/NotFound/svg/illustration.svg";
 
 const Card = styled.div`
 	display: flex;
@@ -94,7 +95,7 @@ const PokemonCard = ({ name }) => {
 		types = [],
 	} = details;
 
-	const pokemonImageUrl = sprites.other.dream_world.front_default;
+	const pokemonImageUrl = sprites?.other?.dream_world.front_default || DefaultPokemonIllustration;
 	const { flavor_text_entries } = species;
 	const description = getDescription(flavor_text_entries);
 	const pokemonId = String(id).padStart(4, "0");

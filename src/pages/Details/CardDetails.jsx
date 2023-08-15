@@ -63,7 +63,7 @@ const CardDetails = (props) => {
 		stats = [],
 	} = props;
 
-	const pokemonImageUrl = sprites?.other?.dream_world.front_default ? sprites?.other?.dream_world.front_default : Illustration;
+	const pokemonImageUrl = sprites?.other?.dream_world.front_default || Illustration;
 	const pokemonId = getBeautifiedId(id);
 
 	return (
