@@ -1,7 +1,7 @@
 import React, { Fragment, useEffect } from "react";
 import PropTypes from "prop-types";
 import useSearch from "hooks/useSearch";
-import { ReactComponent as SearchLogoMobile } from './search-button-mobile.svg';
+import { ReactComponent as SearchLogoMobile } from './svg/search-button-mobile.svg';
 import styled from "styled-components";
 
 const Form = styled.form`

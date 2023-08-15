@@ -6,7 +6,7 @@ import HomeLoading from "./components/Loading";
 import {
 	Container as CardsContainer,
 	Wrapper as CardWrapper,
-	Loading as CardLoading,
+	Loader as CardLoading,
 } from "components/PokemonCard";
 
 import { usePokemonList } from "hooks/pokemonQueries";

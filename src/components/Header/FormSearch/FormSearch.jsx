@@ -2,7 +2,7 @@ import React from "react";
 import useSearch from "hooks/useSearch";
 import styled from "styled-components";
 import { media } from "styles/mixins/media";
-import { ReactComponent as SearchLogo } from './search-button.svg';
+import { ReactComponent as SearchLogo } from './svg/search-button.svg';
 
 const Form = styled.form`
 	width: 100%;

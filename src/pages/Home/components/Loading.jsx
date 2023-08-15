@@ -2,7 +2,7 @@ import React from "react";
 
 import {
 	Container as CardsContainer,
-	Loading as CardLoading,
+	Loader as CardLoader,
 	Wrapper as CardWrapper,
 } from "components/PokemonCard";
 
@@ -15,7 +15,7 @@ const Loading = () => {
 		<CardsContainer>
 			{array.map((item) => (
 				<CardWrapper key={item}>
-					<CardLoading />
+					<CardLoader />
 				</CardWrapper>
 			))}
 		</CardsContainer>

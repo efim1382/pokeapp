@@ -9,7 +9,7 @@ const gradient = keyframes`
 	}
 `;
 
-const LoadingCard = styled.div`
+const CardLoader = styled.div`
 	width: 100%;
 	height: 100%;
 	border-radius: 16px;
@@ -20,4 +20,4 @@ const LoadingCard = styled.div`
 	animation: 1s ${gradient} infinite;
 `;
 
-export default LoadingCard;
+export default CardLoader;

@@ -2,7 +2,7 @@ import React from "react";
 import { Row, Col } from "components/Layout";
 import styled from "styled-components";
 import { media } from "styles/mixins/media";
-import { ReactComponent as Illustration } from './illustration.svg';
+import { ReactComponent as Illustration } from './svg/illustration.svg';
 
 const Container = styled(Row)`
 	min-width: 100%;

@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import Height from "components/Icons/Height";
 import Weight from "components/Icons/Weight";
 import PokemonIllustration from "components/PokemonIllustration";
-import LoadingCard from "./styled/LoadingCard";
+import CardLoader from "./styled/CardLoader";
 import Badge, { Row as BadgesRow } from "components/Badge";
 import { Row } from "components/Layout";
 import { usePokemonDetails } from "hooks/pokemonQueries";
@@ -71,7 +71,7 @@ const PokemonCard = ({ name }) => {
 
 	if (isLoading) {
 		return (
-			<LoadingCard />
+			<CardLoader />
 		);
 	}
 
