@@ -61,6 +61,14 @@ const Link = styled(NavLink)`
 	text-decoration: none;
 `;
 
+const VersionLink = styled(NavLink)`
+	text-transform: capitalize;
+
+	&:hover {
+		text-decoration: none;
+	}
+`;
+
 const Details = () => {
 	const { pokemonName } = useParams();
 
@@ -144,9 +152,9 @@ const Details = () => {
 					>
 						{varieties.map((version) => (
 							<Col $padding="0 16px" key={version.pokemon.name}>
-								<NavLink to={`/pokemon/${version.pokemon.name}/`}>
+								<VersionLink to={`/pokemon/${version.pokemon.name}/`}>
 									{version.pokemon.name}
-								</NavLink>
+								</VersionLink>
 							</Col>
 						))}
 					</Row>

@@ -9,8 +9,8 @@ import { useCustomRequest } from "hooks/pokemonQueries";
 const generateEvolutionRows = (chain) => {
 	const rows = [];
 
-	function generateRow(chainElement, currentRow = []) {
-		const { species, evolves_to } = chainElement;
+	function generateRow(chainElement = {}, currentRow = []) {
+		const { species = {}, evolves_to = [] } = chainElement;
 		const newRow = [...currentRow, species.name];
 
 		if (evolves_to.length === 0) {
@@ -35,8 +35,9 @@ const EvolutionRow = ({ url }) => {
 	} = useCustomRequest(url);
 
 	const { chain = {} } = data;
+	const evolutionRows = generateEvolutionRows(chain);
 
-	if (isLoading) {
+	if (isLoading || !evolutionRows.length) {
 		return null;
 	}
 
@@ -45,8 +46,6 @@ const EvolutionRow = ({ url }) => {
 			<div>Error: {error.message}</div>
 		);
 	}
-
-	const evolutionRows = generateEvolutionRows(chain);
 
 	return (
 		<TableRow title="Evolution">
