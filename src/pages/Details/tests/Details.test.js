@@ -11,8 +11,8 @@ import { pokemonMock, speciesMock } from "api/mocks";
 const queryClient = new QueryClient();
 
 beforeAll(() => {
-	queryClient.setQueryData(["pokemon", "pikachu"], pokemonMock);
-	queryClient.setQueryData(["pokemon-species", "pikachu"], speciesMock);
+	queryClient.setQueryData(["pokemon", "bulbasaur"], pokemonMock);
+	queryClient.setQueryData(["pokemon-species", "bulbasaur"], speciesMock);
 });
 
 describe("Details page", () => {
@@ -22,7 +22,7 @@ describe("Details page", () => {
 		render(
 			<QueryClientProvider client={queryClient}>
 				<ThemeProvider>
-					<MemoryRouter initialEntries={['/pokemon/pikachu']}>
+					<MemoryRouter initialEntries={['/pokemon/bulbasaur']}>
 						<Routes>
 							<Route path="/pokemon/:pokemonName" element={<Details />} />
 						</Routes>

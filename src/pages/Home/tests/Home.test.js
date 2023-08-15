@@ -11,7 +11,7 @@ import { pokemonMock, pokemonListMock } from "api/mocks";
 const queryClient = new QueryClient();
 
 beforeAll(() => {
-	queryClient.setQueryData(["pokemon", "pikachu"], pokemonMock);
+	queryClient.setQueryData(["pokemon", "bulbasaur"], pokemonMock);
 	queryClient.setQueryData(["pokemon-list", 0], pokemonListMock);
 });
 
