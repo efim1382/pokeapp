@@ -15,7 +15,7 @@ const Container = styled(Row)`
 	}
 `;
 
-const IllustrationWrap = styled(Col)`
+const IllustrationWrapper = styled(Col)`
 	margin-right: 24px;
 
 	${media(768)} {
@@ -64,9 +64,9 @@ const Text = styled.div`
 const NotFound = () => {
 	return (
 		<Container>
-			<IllustrationWrap>
+			<IllustrationWrapper>
 				<Illustration />
-			</IllustrationWrap>
+			</IllustrationWrapper>
 
 			<Col>
 				<TextContainer>
