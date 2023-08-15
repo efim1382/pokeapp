@@ -26,6 +26,7 @@ export const light = {
 	button: {
 		text: colors.GREEN,
 		bg: colors.LIGHT_GREEN,
+		bgHover: "#E4F8D8",
 	},
 
 	toggle: {
@@ -72,6 +73,7 @@ export const dark = {
 	button: {
 		text: colors.BLUE,
 		bg: colors.DARK,
+		bgHover: "#3c3b3b"
 	},
 
 	toggle: {

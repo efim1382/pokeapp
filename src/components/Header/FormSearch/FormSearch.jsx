@@ -50,12 +50,18 @@ const Button = styled.button`
 	cursor: pointer;
 	z-index: 1;
 	border-radius: 50%;
+	transition: .2s ease;
 
 	${media("mobile")} {
 		width: 32px;
 		height: 32px;
 		top: 4px;
 	}
+
+	&:hover {
+		transform: rotate(-45deg) scale(1.1);
+	}
+
 `;
 
 const SearchForm = () => {

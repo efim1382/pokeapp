@@ -9,9 +9,14 @@ const StyledToggle = styled.div`
 	height: 42px;
 	cursor: pointer;
 	margin-left: 16px;
+	transition: .2s ease;
 
 	${media("tablet")} {
 		margin-left: 8px;
+	}
+
+	&:hover {
+		transform: rotate(-45deg) scale(1.1);
 	}
 `;
 

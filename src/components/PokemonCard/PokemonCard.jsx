@@ -26,7 +26,8 @@ const Card = styled.div`
 	transition: .2s ease;
 
 	&:hover {
-		box-shadow: 12px 18px 18px 4px rgba(0, 0, 0, 0.1);
+		box-shadow: 0 16px 24px 0 rgba(0, 0, 0, 0.14);
+		transform: translateY(-4px);
 	}
 
 	.name {

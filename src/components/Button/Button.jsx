@@ -20,16 +20,32 @@ const StyledButton = styled.button`
 	cursor: pointer;
 	position: relative;
 	overflow: hidden;
+	transition: .15s ease;
+
+	&:hover {
+		background-color: ${({theme}) => theme.button.bgHover};
+
+		.arrow-left {
+			transform: translateX(-4px);
+		}
+
+		.arrow-right {
+			transform: rotate(180deg) translateX(-4px);
+		}
+
+	}
 
 	.arrow-left {
 		display: flex;
 		margin-right: 8px;
+		transition: .15s ease;
 	}
 
 	.arrow-right {
 		display: flex;
 		margin-left: 8px;
 		transform: rotate(180deg);
+		transition: .15s ease;
 	}
 `;
 
