@@ -118,6 +118,7 @@ const Details = () => {
 	const isPreviousPokemonExist = previousPokemonId > 0;
 	const description = getDescription(flavor_text_entries);
 	const catchRate = ((capture_rate * 100) / maxCaptureRate).toFixed(1);
+	const filteredVisibleAbilities = abilities.filter((item) => !item.is_hidden);
 
 	return (
 		<Row
@@ -166,7 +167,7 @@ const Details = () => {
 
 				<TableRow title="Abilities">
 					<Row $margin="0 -4px">
-						{abilities.map((item) => (
+						{filteredVisibleAbilities.map((item) => (
 							<Col
 								$padding="0 4px"
 								key={item.ability.name}
