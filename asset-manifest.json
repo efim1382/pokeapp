@@ -1,8 +1,8 @@
 {
   "files": {
-    "main.js": "/pokeapp/static/js/main.3ae4edcd.js",
-    "static/js/379.00ff138c.chunk.js": "/pokeapp/static/js/379.00ff138c.chunk.js",
-    "static/js/762.601d32ea.chunk.js": "/pokeapp/static/js/762.601d32ea.chunk.js",
+    "main.js": "/pokeapp/static/js/main.b20fccd6.js",
+    "static/js/379.ef494553.chunk.js": "/pokeapp/static/js/379.ef494553.chunk.js",
+    "static/js/762.a47727a1.chunk.js": "/pokeapp/static/js/762.a47727a1.chunk.js",
     "static/media/PTSans-Bold.ttf": "/pokeapp/static/media/PTSans-Bold.610bc32a7e32c292ce59.ttf",
     "static/media/PTSans-Regular.ttf": "/pokeapp/static/media/PTSans-Regular.77e92507394e2309d837.ttf",
     "static/media/logo.svg": "/pokeapp/static/media/logo.1c9774ca26996cee432efa7ab1c44fb7.svg",
@@ -13,11 +13,11 @@
     "static/media/buble-light-theme.svg": "/pokeapp/static/media/buble-light-theme.e73518ea98b3c1f5e86bcbb9fdb6d020.svg",
     "index.html": "/pokeapp/index.html",
     "static/media/arrow.svg": "/pokeapp/static/media/arrow.62d0ae8fbe937b076aaea3f66682ca66.svg",
-    "main.3ae4edcd.js.map": "/pokeapp/static/js/main.3ae4edcd.js.map",
-    "379.00ff138c.chunk.js.map": "/pokeapp/static/js/379.00ff138c.chunk.js.map",
-    "762.601d32ea.chunk.js.map": "/pokeapp/static/js/762.601d32ea.chunk.js.map"
+    "main.b20fccd6.js.map": "/pokeapp/static/js/main.b20fccd6.js.map",
+    "379.ef494553.chunk.js.map": "/pokeapp/static/js/379.ef494553.chunk.js.map",
+    "762.a47727a1.chunk.js.map": "/pokeapp/static/js/762.a47727a1.chunk.js.map"
   },
   "entrypoints": [
-    "static/js/main.3ae4edcd.js"
+    "static/js/main.b20fccd6.js"
   ]
 }
