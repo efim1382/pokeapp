@@ -1,23 +1,23 @@
 {
   "files": {
-    "main.js": "/pokeapp/static/js/main.efe981d9.js",
-    "static/js/273.5daf0f06.chunk.js": "/pokeapp/static/js/273.5daf0f06.chunk.js",
-    "static/js/762.72e704c1.chunk.js": "/pokeapp/static/js/762.72e704c1.chunk.js",
+    "main.js": "/pokeapp/static/js/main.460d349a.js",
+    "static/js/273.ed5b2173.chunk.js": "/pokeapp/static/js/273.ed5b2173.chunk.js",
+    "static/js/820.3668d170.chunk.js": "/pokeapp/static/js/820.3668d170.chunk.js",
     "static/media/PTSans-Bold.ttf": "/pokeapp/static/media/PTSans-Bold.610bc32a7e32c292ce59.ttf",
     "static/media/PTSans-Regular.ttf": "/pokeapp/static/media/PTSans-Regular.77e92507394e2309d837.ttf",
     "static/media/logo.svg": "/pokeapp/static/media/logo.1c9774ca26996cee432efa7ab1c44fb7.svg",
     "static/media/illustration.svg": "/pokeapp/static/media/illustration.b3d439987fd085af58ec6bc0061f0a52.svg",
     "static/media/search-button.svg": "/pokeapp/static/media/search-button.c28a2d028b57f31ab968bae303a97127.svg",
     "static/media/search-button-mobile.svg": "/pokeapp/static/media/search-button-mobile.79d1b19440dbddda5243e8f0107783dd.svg",
-    "static/media/bubble-dark-theme.svg": "/pokeapp/static/media/bubble-dark-theme.baae13c3a0c1d113c0a14a2e1c5cf7fd.svg",
-    "static/media/buble-light-theme.svg": "/pokeapp/static/media/buble-light-theme.e73518ea98b3c1f5e86bcbb9fdb6d020.svg",
+    "static/media/bubble-dark-theme.svg": "/pokeapp/static/media/bubble-dark-theme.fd14bda8daaf54304e96fbc950733340.svg",
+    "static/media/buble-light-theme.svg": "/pokeapp/static/media/buble-light-theme.38402abcd3581e0e7a1ad454a114ad4e.svg",
     "index.html": "/pokeapp/index.html",
     "static/media/arrow.svg": "/pokeapp/static/media/arrow.62d0ae8fbe937b076aaea3f66682ca66.svg",
-    "main.efe981d9.js.map": "/pokeapp/static/js/main.efe981d9.js.map",
-    "273.5daf0f06.chunk.js.map": "/pokeapp/static/js/273.5daf0f06.chunk.js.map",
-    "762.72e704c1.chunk.js.map": "/pokeapp/static/js/762.72e704c1.chunk.js.map"
+    "main.460d349a.js.map": "/pokeapp/static/js/main.460d349a.js.map",
+    "273.ed5b2173.chunk.js.map": "/pokeapp/static/js/273.ed5b2173.chunk.js.map",
+    "820.3668d170.chunk.js.map": "/pokeapp/static/js/820.3668d170.chunk.js.map"
   },
   "entrypoints": [
-    "static/js/main.efe981d9.js"
+    "static/js/main.460d349a.js"
   ]
 }
