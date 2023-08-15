@@ -1,8 +1,8 @@
 import React from "react";
 import { Row, Col } from "components/Layout";
-import { ReactComponent as Illustration } from './illustration.svg';
 import styled from "styled-components";
 import { media } from "styles/mixins/media";
+import { ReactComponent as Illustration } from './illustration.svg';
 
 const Container = styled(Row)`
 	min-width: 100%;
@@ -61,27 +61,26 @@ const Text = styled.div`
 	}
 `;
 
-
-
-
 const NotFound = () => {
 	return (
 		<Container>
 			<IllustrationWrap>
 				<Illustration />
 			</IllustrationWrap>
+
 			<Col>
 				<TextContainer>
 					<TextBold>
 						404
 					</TextBold>
+
 					<TextBold>
 						NOT FOUND
 					</TextBold>
+
 					<Text>
 						Couldn’t find that. <a href="/">Try something else?</a>
 					</Text>
-
 				</TextContainer>
 			</Col>
 		</Container>

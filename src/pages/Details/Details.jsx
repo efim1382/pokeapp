@@ -6,11 +6,11 @@ import Button, { Container as PaginationContainer } from "components/Button";
 import CardDetails from "./CardDetails";
 import EvolutionRow from "./EvolutionRow";
 import TableRow from "./components/TableRow";
+import Loader, { LoaderContainer } from "components/Loader";
 import { usePokemonDetails } from "hooks/pokemonQueries";
 import { getDescription, getBeautifiedId } from "helpers/pokemonHelpers";
 import styled from "styled-components";
 import { media } from "styles/mixins/media";
-import Loader, { LoaderContainer } from "components/Loader";
 
 const maxCaptureRate = 255;
 
