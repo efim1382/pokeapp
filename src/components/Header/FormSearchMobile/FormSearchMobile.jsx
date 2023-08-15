@@ -1,6 +1,6 @@
-import React, { Fragment, useState, useEffect } from "react";
+import React, { Fragment, useEffect } from "react";
 import PropTypes from "prop-types";
-import { useNavigate } from "react-router-dom";
+import useSearch from "hooks/useSearch";
 import { ReactComponent as SearchLogoMobile } from './search-button-mobile.svg';
 import styled from "styled-components";
 
@@ -50,22 +50,18 @@ const MobileIconContainer = styled.div`
 	min-width: 32px;
 `;
 
-const FormSearchMobile = ({ isSearchExpanded, expandSearch, collapseSearch }) => {
-	const navigate = useNavigate();
-	const [searchValue, setSearchValue] = useState("");
+const FormSearchMobile = (props) => {
+	const {
+		isSearchExpanded,
+		expandSearch,
+		collapseSearch,
+	} = props;
 
-	const handleSearchChange = (event) => setSearchValue(event.target.value);
-
-	const handleSearchSubmit = (event) => {
-		event.preventDefault();
-
-		if (!searchValue) {
-			return;
-		}
-
-		navigate(`/pokemon/${searchValue}/`);
-		setSearchValue("");
-	};
+	const {
+		value,
+		onChange,
+		onSubmit,
+	} = useSearch();
 
 	const handleScroll = () => {
 		if (isSearchExpanded) {
@@ -86,12 +82,12 @@ const FormSearchMobile = ({ isSearchExpanded, expandSearch, collapseSearch }) =>
 			{isSearchExpanded ? (
 				<Form
 					className={isSearchExpanded && "show-search"}
-					onSubmit={handleSearchSubmit}
+					onSubmit={onSubmit}
 				>
 					<input
 						type="text"
-						value={searchValue}
-						onChange={handleSearchChange}
+						value={value}
+						onChange={onChange}
 						placeholder="Use the Advanced Search to explore Pokémon"
 					/>
 
@@ -101,7 +97,7 @@ const FormSearchMobile = ({ isSearchExpanded, expandSearch, collapseSearch }) =>
 				</Form>
 			) : (
 				<MobileIconContainer onClick={expandSearch}>
-					<SearchLogoMobile/>
+					<SearchLogoMobile />
 				</MobileIconContainer>
 			)}
 		</Fragment>

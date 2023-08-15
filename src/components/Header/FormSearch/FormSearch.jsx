@@ -1,6 +1,5 @@
-import React, { useState } from "react";
-import PropTypes from "prop-types";
-import { useNavigate } from "react-router-dom";
+import React from "react";
+import useSearch from "hooks/useSearch";
 import styled from "styled-components";
 import { media } from "styles/mixins/media";
 import { ReactComponent as SearchLogo } from './search-button.svg';
@@ -60,28 +59,18 @@ const Button = styled.button`
 `;
 
 const SearchForm = () => {
-	const navigate = useNavigate();
-	const [searchValue, setSearchValue] = useState("");
-
-	const handleSearchChange = (event) => setSearchValue(event.target.value);
-
-	const handleSearchSubmit = (event) => {
-		event.preventDefault();
-
-		if (!searchValue) {
-			return;
-		}
-
-		navigate(`/pokemon/${searchValue}/`);
-		setSearchValue("");
-	};
+	const {
+		value,
+		onChange,
+		onSubmit,
+	} = useSearch();
 
 	return (
-		<Form onSubmit={handleSearchSubmit}>
+		<Form onSubmit={onSubmit}>
 			<input
 				type="text"
-				value={searchValue}
-				onChange={handleSearchChange}
+				value={value}
+				onChange={onChange}
 				placeholder="Use the Advanced Search to explore Pokémon"
 			/>
 
@@ -90,11 +79,6 @@ const SearchForm = () => {
 			</Button>
 		</Form>
 	);
-};
-
-SearchForm.propTypes = {
-	placeholder: PropTypes.string,
-	onClick: PropTypes.func,
 };
 
 export default SearchForm;
