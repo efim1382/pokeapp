@@ -1,9 +1,9 @@
-import React, { Fragment, useEffect, useRef } from "react";
+import React, { Fragment } from "react";
 import PropTypes from "prop-types";
 import useSearch from "hooks/useSearch";
+import useClickAway from "hooks/useClickAway";
 import { ReactComponent as SearchLogoMobile } from './svg/search-button-mobile.svg';
 import styled from "styled-components";
-import { useClickAway } from "@uidotdev/usehooks";
 
 const Form = styled.form`
 	width: 100%;
@@ -49,7 +49,7 @@ const MobileIconContainer = styled.div`
 	width: 32px;
 	height: 32px;
 	min-width: 32px;
-	display: ${({isSearchExpanded}) => isSearchExpanded ? "none" : "block"};
+	display: ${({$isSearchExpanded}) => $isSearchExpanded ? "none" : "block"};
 `;
 
 const FormSearchMobile = (props) => {
@@ -87,9 +87,11 @@ const FormSearchMobile = (props) => {
 					</Button>
 				</Form>
 			)}
+
 			<MobileIconContainer
-				isSearchExpanded={isSearchExpanded}
-				onClick={expandSearch}>
+				$isSearchExpanded={isSearchExpanded}
+				onClick={expandSearch}
+			>
 				<SearchLogoMobile />
 			</MobileIconContainer>
 		</Fragment>
