@@ -3,7 +3,6 @@ import PropTypes from "prop-types";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import { media } from "styles/mixins/media";
-import { useMedia } from "hooks/useMedia";
 import { ReactComponent as SearchLogo } from './search-button.svg';
 
 const Form = styled.form`
@@ -63,7 +62,6 @@ const Button = styled.button`
 const SearchForm = () => {
 	const navigate = useNavigate();
 	const [searchValue, setSearchValue] = useState("");
-	const isMobile = useMedia("(max-width: 480px)");
 
 	const handleSearchChange = (event) => setSearchValue(event.target.value);
 

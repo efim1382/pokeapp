@@ -5,15 +5,19 @@ const animation = keyframes`
 	from {
 		transform: none
 	}
+
 	20% {
 		transform: translate3d(-15%,0,0) rotate3d(0,0,1,-10deg)
 	}
+
 	40% {
 		transform: translate3d(15%,0,0) rotate3d(0,0,1,5deg)
 	}
+
 	60% {
 		transform: translate3d(-7%,0,0) rotate3d(0,0,1,-10deg)
 	}
+
 	to {
 		transform: none
 	}
@@ -31,7 +35,6 @@ const Container = styled.div`
 		animation-fill-mode: both;
 		animation-iteration-count: infinite;
 	}
-
 `;
 
 const Loader = () => {

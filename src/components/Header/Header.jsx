@@ -34,16 +34,15 @@ const StyledLogo = styled(Logo)`
 `;
 
 const Header = () => {
-	const [isShowSearch, setIsShowSearch] = useState(false);
-
+	const [isSearchExpanded, setIsSearchExpanded] = useState(false);
 	const isMobile = useMedia("(max-width: 480px)");
 
-	const showMobileSearch = () => setIsShowSearch(true);
-	const hideMobileSearch = () => setIsShowSearch(false);
+	const expandMobileSearch = () => setIsSearchExpanded(true);
+	const collapseMobileSearch = () => setIsSearchExpanded(false);
 
 	return (
 		<HeaderContainer>
-			{!isShowSearch && (
+			{!isSearchExpanded && (
 				<Link to="/">
 					<StyledLogo />
 				</Link>
@@ -52,13 +51,15 @@ const Header = () => {
 			{!isMobile && (
 				<FormSearch />
 			)}
+
 			{isMobile && (
 				<FormSearchMobile
-					isShowSearch={isShowSearch}
-					showSearch={showMobileSearch}
-					hideSearch={hideMobileSearch}
+					isSearchExpanded={isSearchExpanded}
+					expandSearch={expandMobileSearch}
+					collapseSearch={collapseMobileSearch}
 				/>
 			)}
+
 			<ThemeSwitcher />
 		</HeaderContainer>
 	);

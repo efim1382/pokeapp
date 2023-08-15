@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from "react";
+import React, { Fragment, useState, useEffect } from "react";
 import PropTypes from "prop-types";
 import { useNavigate } from "react-router-dom";
 import { ReactComponent as SearchLogoMobile } from './search-button-mobile.svg';
@@ -50,9 +50,10 @@ const MobileIconContainer = styled.div`
 	min-width: 32px;
 `;
 
-const FormSearchMobile = ({isShowSearch, showSearch, hideSearch}) => {
+const FormSearchMobile = ({ isSearchExpanded, expandSearch, collapseSearch }) => {
 	const navigate = useNavigate();
 	const [searchValue, setSearchValue] = useState("");
+
 	const handleSearchChange = (event) => setSearchValue(event.target.value);
 
 	const handleSearchSubmit = (event) => {
@@ -66,26 +67,25 @@ const FormSearchMobile = ({isShowSearch, showSearch, hideSearch}) => {
 		setSearchValue("");
 	};
 
-	const handleClick = () => {
-		if (isShowSearch) {
-			hideSearch();
+	const handleScroll = () => {
+		if (isSearchExpanded) {
+			collapseSearch();
 		}
 	};
 
 	useEffect(() => {
-		document.addEventListener("scroll", handleClick);
+		document.addEventListener("scroll", handleScroll);
 
 		return () => {
-			document.removeEventListener("scroll", handleClick);
+			document.removeEventListener("scroll", handleScroll);
 		};
-	},);
-
+	}, []);
 
 	return (
-		<>
-			{isShowSearch ? (
+		<Fragment>
+			{isSearchExpanded ? (
 				<Form
-					className={isShowSearch && "show-search"}
+					className={isSearchExpanded && "show-search"}
 					onSubmit={handleSearchSubmit}
 				>
 					<input
@@ -100,22 +100,24 @@ const FormSearchMobile = ({isShowSearch, showSearch, hideSearch}) => {
 					</Button>
 				</Form>
 			) : (
-				<MobileIconContainer
-					onClick={showSearch}
-				>
+				<MobileIconContainer onClick={expandSearch}>
 					<SearchLogoMobile/>
 				</MobileIconContainer>
 			)}
-
-		</>
+		</Fragment>
 	);
-
 };
 
-FormSearchMobile.prototype = {
-	isShowSearch: PropTypes.bool,
-	showSearch: PropTypes.func,
-	hideSearch: PropTypes.func,
+FormSearchMobile.defaultProps = {
+	isSearchExpanded: false,
+	expandSearch: Function(),
+	collapseSearch: Function(),
+};
+
+FormSearchMobile.propTypes = {
+	isSearchExpanded: PropTypes.bool,
+	expandSearch: PropTypes.func,
+	collapseSearch: PropTypes.func,
 };
 
 export default FormSearchMobile;

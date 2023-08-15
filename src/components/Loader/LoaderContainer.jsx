@@ -1,7 +1,8 @@
 import React from "react";
-import {Row, Col} from "components/Layout";
+import PropTypes from "prop-types";
+import { Row } from "components/Layout";
 
-const LoaderContainer = ({children}) => {
+const LoaderContainer = ({ children }) => {
 	return (
 		<Row
 			$minWidth="100%"
@@ -12,6 +13,10 @@ const LoaderContainer = ({children}) => {
 			{children}
 		</Row>
 	);
+};
+
+LoaderContainer.propTypes = {
+	children: PropTypes.any.isRequired,
 };
 
 export default LoaderContainer;

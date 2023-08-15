@@ -8,12 +8,12 @@ const NotFoundPage = lazy(() => import("pages/NotFound"));
 const HomePage = lazy(() => import("pages/Home"));
 const DetailsPage = lazy(() => import("pages/Details"));
 
-const Loading = () => {
+const GlobalLoading = () => {
 	return (
 		<LoaderContainer>
 			<Loader />
 		</LoaderContainer>
-	)
+	);
 };
 
 const Router = () => (
@@ -23,7 +23,7 @@ const Router = () => (
 				path="*"
 
 				element={
-					<Suspense fallback={Loading}>
+					<Suspense fallback={<GlobalLoading />}>
 						<NotFoundPage />
 					</Suspense>
 				}
@@ -43,7 +43,7 @@ const Router = () => (
 				path="/pokemon/:pokemonName/"
 
 				element={
-					<Suspense fallback={Loading}>
+					<Suspense fallback={<GlobalLoading />}>
 						<DetailsPage />
 					</Suspense>
 				}
