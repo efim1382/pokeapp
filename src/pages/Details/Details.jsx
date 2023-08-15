@@ -150,6 +150,7 @@ const Details = () => {
 				<TableRow title="Versions">
 					<Row
 						$margin="0 -16px"
+						$width="auto"
 					>
 						{varieties.map((version) => (
 							<Col $padding="0 16px" key={version.pokemon.name}>
@@ -166,7 +167,10 @@ const Details = () => {
 				</TableRow>
 
 				<TableRow title="Abilities">
-					<Row $margin="0 -4px">
+					<Row
+						$margin="0 -4px"
+						$width="auto"
+					>
 						{filteredVisibleAbilities.map((item) => (
 							<Col
 								$padding="0 4px"
@@ -184,7 +188,10 @@ const Details = () => {
 				</TableRow>
 
 				<TableRow title="Egg group">
-					<Row $margin="0 -4px">
+					<Row
+						$margin="0 -4px"
+						$width="auto"
+					>
 						{egg_groups.map((item) => (
 							<Col $padding="0 4px" key={item.name}>
 								{item.name}

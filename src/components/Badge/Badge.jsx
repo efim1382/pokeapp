@@ -11,6 +11,7 @@ const BadgeWrapper = styled.div`
 	color: #FFF;
 	text-align: center;
 	font-size: 10px;
+	height: 20px;
 	font-weight: 700;
 	line-height: 2;
 	text-transform: uppercase;

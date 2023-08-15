@@ -23,6 +23,11 @@ const Card = styled.div`
 	background-color: ${({theme}) => theme.card.bg};
 	text-decoration: none;
 	box-shadow: 0 8px 8px 0 rgba(0, 0, 0, 0.06);
+	transition: .2s ease;
+
+	&:hover {
+		box-shadow: 12px 18px 18px 4px rgba(0, 0, 0, 0.1);
+	}
 
 	.name {
 		font-size: 32px;

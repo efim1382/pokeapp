@@ -9,6 +9,7 @@ import Stat from "pages/Details/components/Stat";
 import { getBeautifiedId } from "helpers/pokemonHelpers";
 import styled from "styled-components";
 import { media } from "styles/mixins/media";
+import Illustration from './svg/illustration.svg';
 
 const Card = styled.div`
 	display: flex;
@@ -62,7 +63,7 @@ const CardDetails = (props) => {
 		stats = [],
 	} = props;
 
-	const pokemonImageUrl = sprites?.other?.dream_world.front_default;
+	const pokemonImageUrl = sprites?.other?.dream_world.front_default ? sprites?.other?.dream_world.front_default : Illustration;
 	const pokemonId = getBeautifiedId(id);
 
 	return (

@@ -11,6 +11,7 @@ const Container = styled.div`
 	width: 128px;
 	height: 128px;
 	margin-bottom: 40px;
+	transition: all .3s ease;
 
 	&:after {
 		content: "";
@@ -26,6 +27,12 @@ const Container = styled.div`
 		background-size: contain;
 		background-position: center;
 		z-index: 1;
+	}
+
+	&:hover {
+		#sg-animate {
+			r: 68;
+		}
 	}
 
 	svg {

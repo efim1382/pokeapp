@@ -1,13 +1,9 @@
-import React from "react";
-import PropTypes from "prop-types";
 import styled from "styled-components";
-import { ReactComponent as DefaultIllustration } from "pages/NotFound/svg/illustration.svg";
 
-const StyledIllustration = styled.div`
+const PokemonIllustration = styled.div`
 	width: 182px;
 	height: 182px;
 	position: relative;
-	background-image: url(${({$src}) => $src});
 	background-repeat: no-repeat;
 	background-size: contain;
 
@@ -26,28 +22,18 @@ const StyledIllustration = styled.div`
 		top: -40px;
 		opacity: .05;
 	}
+
+	&:after {
+		content: "";
+		position: relative;
+		display: block;
+		width: 100%;
+		height: 100%;
+		background-image: url(${({$src}) => $src});
+		background-repeat: no-repeat;
+		background-size: contain;
+		z-index: 1;
+	}
 `;
-
-const StyledDefaultIllustration = styled(DefaultIllustration)`
-	width: 100%;
-	height: 100%;
-`;
-
-const PokemonIllustration = (props) => {
-	const { $src } = props;
-
-	return (
-		<StyledIllustration {...props}>
-			{!$src && (
-				<StyledDefaultIllustration />
-			)}
-		</StyledIllustration>
-	);
-};
-
-PokemonIllustration.propTypes = {
-	$pokemonId: PropTypes.string.isRequired,
-	$src: PropTypes.string,
-};
 
 export default PokemonIllustration;

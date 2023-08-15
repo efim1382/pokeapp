@@ -14,6 +14,10 @@ const GlobalStyles = createGlobalStyle`
 
 	a {
 		color: ${({theme}) => theme.link};
+
+		&:hover {
+			text-decoration: none;
+		}
 	}
 
 	@font-face {
