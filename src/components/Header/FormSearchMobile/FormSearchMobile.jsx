@@ -74,6 +74,7 @@ const FormSearchMobile = (props) => {
 
 		return () => {
 			document.removeEventListener("scroll", handleScroll);
+			collapseSearch();
 		};
 	}, []);
 
