@@ -8,7 +8,7 @@ import {
 
 import { limit } from "pages/Home";
 
-const Loading = () => {
+const Loader = () => {
 	const array = [...Array(limit).keys()];
 
 	return (
@@ -22,4 +22,4 @@ const Loading = () => {
 	);
 };
 
-export default Loading;
+export default Loader;

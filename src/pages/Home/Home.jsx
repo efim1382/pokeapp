@@ -1,7 +1,7 @@
 import React, { Fragment, Suspense, useEffect, lazy } from "react";
 import { NavLink, useLocation, useSearchParams } from "react-router-dom";
 import Button, { Container as PaginationContainer } from "components/Button";
-import HomeLoading from "./components/Loading";
+import HomeLoading from "./components/Loader";
 
 import {
 	Container as CardsContainer,

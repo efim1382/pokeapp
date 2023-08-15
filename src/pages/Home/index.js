@@ -1,2 +1,2 @@
 export { default, limit } from "./Home";
-export { default as Loader } from "./components/Loading";
+export { default as Loader } from "./components/Loader";

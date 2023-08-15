@@ -34,17 +34,21 @@ export const light = {
 		line: "#252525",
 		circle: "#252525"
 	},
+
 	table: {
 		bgFirst: colors.WHITE,
 		bgSecond: "#FBFBFB",
 		title: colors.BLACK,
 		value: "#383838",
 	},
+
 	stat: {
 		text: "#383838",
 		progressBar: colors.RED,
 	},
+
 	evoText: colors.GREEN,
+
 	notFound: {
 		text: colors.GREEN,
 		textSecondary: "#375A62"
@@ -76,17 +80,21 @@ export const dark = {
 		line: "#FF4C41",
 		circle: "#FF4C41"
 	},
+
 	table: {
 		bgFirst: "#383A3F",
 		bgSecond: colors.DARK_SECONDARY,
 		title: colors.WHITE,
 		value: colors.GRAY,
 	},
+
 	stat: {
 		text: colors.GRAY,
 		progressBar: colors.BLUE
 	},
+
 	evoText: colors.BLUE,
+
 	notFound: {
 		text: colors.BLUE,
 		textSecondary: colors.GRAY,
